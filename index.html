@@ -16,8 +16,8 @@
     body {
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
-      background-color: #f9fafb; /* fond clair */
-      color: #111827; /* texte gris foncé */
+      background-color: #f9fafb;
+      color: #111827;
     }
 
     a { transition: all 0.3s ease-in-out; }
@@ -27,6 +27,10 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 0.8s ease-out forwards;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
@@ -57,18 +61,13 @@
     .logo-anim:hover { transform: scale(1.08) rotate(-2deg); }
 
     /* Boutons */
-    .btn {
-      transition: all 0.3s ease-in-out;
-    }
+    .btn { transition: all 0.3s ease-in-out; }
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Couleur verte du logo */
-    :root {
-      --logo-green: #1f5e2c;
-    }
+    :root { --logo-green: #1f5e2c; }
 
     .btn-green { background-color: var(--logo-green); color: #fff; }
     .btn-green:hover { background-color: #16401a; }
@@ -118,8 +117,14 @@
           <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" class="btn btn-outline-green px-5 py-3 rounded-md text-sm font-medium">Découvrir Dirickx</a>
         </div>
       </div>
-      <div class="rounded-xl overflow-hidden shadow-lg fade-in w-full">
-        <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover hover:scale-105 transform transition duration-500" />
+      <div class="relative rounded-xl overflow-hidden shadow-lg fade-in w-full group">
+        <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" />
+        
+        <!-- Overlay lien Catalogue -->
+        <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener"
+           class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-white text-lg font-semibold rounded-xl">
+          Catalogue Dirickx
+        </a>
       </div>
     </section>
 
