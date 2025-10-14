@@ -78,7 +78,21 @@
     section { background-color: #ffffff; border-radius: 1rem; }
     footer { background-color: #f3f4f6; }
 
-    /* Lien catalogue visible directement */
+    /* Lien catalogue visible directement + effet zoom */
+    .catalogue-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .catalogue-container img {
+      transition: transform 0.7s ease;
+    }
+
+    .catalogue-container:hover img {
+      transform: scale(1.05);
+    }
+
     .catalogue-overlay {
       position: absolute;
       bottom: 0;
@@ -138,10 +152,10 @@
         </div>
       </div>
 
-      <!-- IMAGE + LIEN CATALOGUE visible directement -->
-      <div class="relative rounded-xl overflow-hidden shadow-lg fade-in w-full group">
+      <!-- IMAGE + LIEN CATALOGUE visible directement + zoom hover -->
+      <div class="catalogue-container fade-in w-full">
         <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener" class="block relative">
-          <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105" />
+          <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" />
           <div class="catalogue-overlay">
             📘 <span>Catalogue Dirickx</span>
           </div>
