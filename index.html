@@ -77,6 +77,26 @@
     header { background-color: #ffffff; }
     section { background-color: #ffffff; border-radius: 1rem; }
     footer { background-color: #f3f4f6; }
+
+    /* Effet du lien catalogue fondu dans la photo */
+    .catalogue-overlay {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.55));
+      color: white;
+      padding: 1rem 1.5rem;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      font-weight: 500;
+      font-size: 1rem;
+      border-bottom-right-radius: 0.75rem;
+      border-bottom-left-radius: 0.75rem;
+    }
+
+    .group:hover .catalogue-overlay {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -118,16 +138,16 @@
         </div>
       </div>
 
-      <!-- IMAGE + LIEN CATALOGUE -->
+      <!-- IMAGE + LIEN CATALOGUE (effet fondu pro) -->
       <div class="relative rounded-xl overflow-hidden shadow-lg fade-in w-full group">
         <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener" class="block relative">
-          <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-white text-lg font-semibold rounded-xl">
-            <span class="text-2xl mb-2">📘</span>
-            <span>Voir le catalogue Dirickx</span>
+          <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="catalogue-overlay flex items-end justify-end w-full">
+            <span class="flex items-center gap-2 text-white drop-shadow-lg">
+              📘 <span class="font-medium">Catalogue Dirickx</span>
+            </span>
           </div>
         </a>
-        <p class="text-center text-sm text-gray-600 mt-3 italic">📘 Cliquez sur la photo pour consulter le catalogue Dirickx</p>
       </div>
     </section>
 
