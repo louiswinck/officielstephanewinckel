@@ -68,6 +68,8 @@
   <meta property="og:image" content="/hero-project.jpg" />
   <meta property="og:url" content="https://www.dirickx.fr/" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased w-full">
 
@@ -113,20 +115,12 @@
       </div>
 
       <!-- Image cliquable vers le catalogue -->
-      <a href="https://www.dirickx.fr/catalogue" target="_blank" rel="noopener"
+      <a href="https://www.dirickx.fr/catalogue" target="_blank" rel="noopener" 
          class="relative block rounded-xl overflow-hidden shadow-lg fade-in w-full group">
-
         <img src="/hero-project.jpg" alt="Accédez au catalogue Dirickx" 
-             class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-105" loading="lazy" />
-
-        <!-- Dégradé léger -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-
-        <!-- Texte fondu -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm font-medium tracking-wide 
-                    bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-white/20 
-                    transition duration-300 group-hover:bg-white/20 group-hover:scale-105">
-          📘 Voir le catalogue Dirickx
+             class="w-full h-80 object-cover transform transition duration-500 group-hover:scale-105" loading="lazy" />
+        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-center py-2 text-sm transition group-hover:bg-opacity-70">
+          📘 Cliquez sur la photo pour ouvrir le catalogue Dirickx
         </div>
       </a>
     </section>
@@ -221,7 +215,7 @@
     }, { threshold: 0.1 });
     elements.forEach(el => observer.observe(el));
 
-    // Année dynamique dans le footer
+    // Année automatique
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
