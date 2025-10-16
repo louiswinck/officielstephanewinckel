@@ -8,38 +8,108 @@
 
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #f9fafb; color: #111827; }
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+
     a { transition: all 0.3s ease-in-out; }
-    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease-out forwards; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-    .header-anim { opacity: 0; transform: translateY(-20px); animation: headerDrop 0.8s ease-out forwards; animation-delay: 0.3s; }
-    @keyframes headerDrop { to { opacity: 1; transform: translateY(0); } }
-    .logo-anim { opacity: 0; transform: translateY(-15px); animation: logoEntry 1s ease-out forwards; animation-delay: 0.6s; transition: transform 0.4s ease; }
-    @keyframes logoEntry { to { opacity: 1; transform: translateY(0); } }
+
+    /* Apparition globale */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animation du header */
+    .header-anim {
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: headerDrop 0.8s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+    @keyframes headerDrop {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animation du logo */
+    .logo-anim {
+      opacity: 0;
+      transform: translateY(-15px);
+      animation: logoEntry 1s ease-out forwards;
+      animation-delay: 0.6s;
+      transition: transform 0.4s ease;
+    }
+    @keyframes logoEntry {
+      to { opacity: 1; transform: translateY(0); }
+    }
     .logo-anim:hover { transform: scale(1.08) rotate(-2deg); }
+
+    /* Boutons */
     .btn { transition: all 0.3s ease-in-out; }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
     :root { --logo-green: #1f5e2c; }
+
     .btn-green { background-color: var(--logo-green); color: #fff; }
     .btn-green:hover { background-color: #16401a; }
     .btn-outline-green { border: 2px solid var(--logo-green); color: var(--logo-green); }
     .btn-outline-green:hover { background-color: var(--logo-green); color: #fff; }
+
     header { background-color: #ffffff; }
     section { background-color: #ffffff; border-radius: 1rem; }
     footer { background-color: #f3f4f6; }
-    .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; }
-    .catalogue-container img { transition: transform 0.7s ease; }
-    .catalogue-container:hover img { transform: scale(1.05); }
+
+    /* Lien catalogue visible directement + effet zoom */
+    .catalogue-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .catalogue-container img {
+      transition: transform 0.7s ease;
+    }
+
+    .catalogue-container:hover img {
+      transform: scale(1.05);
+    }
+
     .catalogue-overlay {
-      position: absolute; bottom: 0; right: 0; width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
       background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
-      color: white; padding: 1rem 1.5rem; font-weight: 500; font-size: 1.1rem;
-      display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem;
-      border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;
+      color: white;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+      font-size: 1.1rem;
+      border-bottom-left-radius: 0.75rem;
+      border-bottom-right-radius: 0.75rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      box-sizing: border-box;
     }
   </style>
 </head>
@@ -55,7 +125,8 @@
           <p class="text-sm text-gray-500">Chargé d'affaire · Dirickx — Luxembourg</p>
         </div>
       </div>
-      <a href="mailto:stephane.winckel@luxmeca.lu"
+      <a href="https://mail.google.com/mail/?view=cm&to=stephane.winckel@luxmeca.lu&su=Demande%20d'information&body=Bonjour%20Stéphane,"
+         target="_blank" rel="noopener"
          class="btn btn-green px-4 py-2 rounded-md text-sm font-medium">
          Envoyer un mail
       </a>
@@ -81,8 +152,9 @@
         </div>
       </div>
 
+      <!-- IMAGE + LIEN CATALOGUE visible directement + zoom hover -->
       <div class="catalogue-container fade-in w-full">
-        <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener">
+        <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener" class="block relative">
           <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" loading="lazy" />
           <div class="catalogue-overlay">
             📘 <span>Catalogue Dirickx</span>
@@ -91,22 +163,50 @@
       </div>
     </section>
 
-    <!-- Zone / Localisation -->
+    <!-- Produits -->
+    <section id="produits" class="p-8 shadow-sm fade-in w-full px-6">
+      <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--logo-green);">Solutions Dirickx</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
+        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+          <h4 class="font-medium" style="color: var(--logo-green);">Clôtures & Treillis</h4>
+          <p class="text-gray-700 text-sm mt-2">Robustes, adaptées aux collectivités et sites industriels.</p>
+        </article>
+        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+          <h4 class="font-medium" style="color: var(--logo-green);">Portails & Motorisation</h4>
+          <p class="text-gray-700 text-sm mt-2">Solutions sur-mesure pour accès piéton et véhicules.</p>
+        </article>
+        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+          <h4 class="font-medium" style="color: var(--logo-green);">Contrôle d’accès & Sécurité</h4>
+          <p class="text-gray-700 text-sm mt-2">Systèmes intégrés pour la protection périmétrique.</p>
+        </article>
+        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
+          <h4 class="font-medium" style="color: var(--logo-green);">Maintenance & Service</h4>
+          <p class="text-gray-700 text-sm mt-2">Réseau d'installateurs et service après-vente dédiés.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Zone -->
     <section id="zone" class="grid md:grid-cols-2 gap-10 items-center fade-in w-full px-6">
       <div>
-        <h3 class="text-2xl font-semibold mb-3" style="color: var(--logo-green);">Localisation</h3>
+        <h3 class="text-2xl font-semibold mb-3" style="color: var(--logo-green);">Zone couverte</h3>
         <p class="text-gray-700 mb-4 leading-relaxed">
-          Je suis basé chez <strong>Lux-Méca SA</strong> à <strong>Ehlerange</strong>, au cœur du Luxembourg, d’où je couvre tout le territoire.
+          Intervention sur l'ensemble du Luxembourg. Basé à <strong>Ehlerange</strong> au sein de <strong>Luxmeca SA</strong>.
         </p>
-        <p class="text-sm text-gray-500">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
+        <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
       </div>
 
-      <!-- Carte satellite + point rouge -->
+      <!-- Carte centrée sur Luxmeca SA avec vue satellite -->
       <div class="rounded-xl overflow-hidden shadow-lg w-full">
-        <iframe title="Luxmeca Ehlerange - Vue satellite avec repère"
-                class="w-full h-64"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2635.478955164691!2d5.9322476!3d49.5075538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47955b7014abef65%3A0x3a4b09c6ec62b2a8!2sLux-M%C3%A9ca%20S.A.!5e1!3m2!1sfr!2slu!4v1699999999999!5m2!1sfr!2slu"
-                frameborder="0" allowfullscreen loading="lazy"></iframe>
+        <iframe 
+          title="Luxmeca SA - Ehlerange" 
+          class="w-full h-64"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.324928184143!2d5.93385921571863!3d49.501824579355955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47954c02a4270a8f%3A0xd48914ef09f9eaf0!2sLux%20M%C3%A9ca%20s.a.!5e0!3m2!1sfr!2slu!4v1739635670000!5m2!1sfr!2slu"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </section>
 
@@ -126,23 +226,23 @@
           <p class="mt-2 text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" style="color: var(--logo-green);" class="hover:underline">dirickx.fr</a></p>
         </div>
 
-        <!-- Formulaire -->
+        <!-- Formulaire de contact conservé -->
         <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-4 w-full">
           <div>
             <label class="block text-sm font-medium">Nom</label>
-            <input name="name" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900" />
+            <input name="name" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-var(--logo-green) focus:border-var(--logo-green) bg-white text-gray-900" />
           </div>
           <div>
             <label class="block text-sm font-medium">Email</label>
-            <input name="email" type="email" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900" />
+            <input name="email" type="email" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-var(--logo-green) focus:border-var(--logo-green) bg-white text-gray-900" />
           </div>
           <div>
             <label class="block text-sm font-medium">Téléphone</label>
-            <input name="phone" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900" />
+            <input name="phone" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-var(--logo-green) focus:border-var(--logo-green) bg-white text-gray-900" />
           </div>
           <div>
             <label class="block text-sm font-medium">Message</label>
-            <textarea name="message" rows="4" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 bg-white text-gray-900"></textarea>
+            <textarea name="message" rows="4" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-var(--logo-green) focus:border-var(--logo-green) bg-white text-gray-900"></textarea>
           </div>
           <button type="submit" class="btn btn-green px-5 py-3 rounded-md w-full">Envoyer</button>
         </form>
@@ -154,6 +254,7 @@
       © <script>document.write(new Date().getFullYear())</script> Dirickx — Chargé d'affaire Luxembourg · Stéphane Winckel · Luxmeca SA ·
       <a href="/mentions-legales.html" class="hover:underline text-gray-600">Mentions légales</a>
     </footer>
+
   </main>
 
   <script>
