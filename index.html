@@ -6,10 +6,7 @@
   <meta name="description" content="Stéphane Winckel — Chargé d'affaire Dirickx Luxembourg. Solutions de clôtures, portails et sécurité périmétrique pour le Luxembourg." />
   <title>Dirickx Luxembourg – Stéphane Winckel</title>
 
-  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -19,10 +16,7 @@
       background-color: #f9fafb;
       color: #111827;
     }
-
     a { transition: all 0.3s ease-in-out; }
-
-    /* Apparition globale */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -35,8 +29,6 @@
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Animation du header */
     .header-anim {
       opacity: 0;
       transform: translateY(-20px);
@@ -46,8 +38,6 @@
     @keyframes headerDrop {
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Animation du logo */
     .logo-anim {
       opacity: 0;
       transform: translateY(-15px);
@@ -59,40 +49,30 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .logo-anim:hover { transform: scale(1.08) rotate(-2deg); }
-
-    /* Boutons */
     .btn { transition: all 0.3s ease-in-out; }
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
-
     :root { --logo-green: #1f5e2c; }
-
     .btn-green { background-color: var(--logo-green); color: #fff; }
     .btn-green:hover { background-color: #16401a; }
     .btn-outline-green { border: 2px solid var(--logo-green); color: var(--logo-green); }
     .btn-outline-green:hover { background-color: var(--logo-green); color: #fff; }
-
     header { background-color: #ffffff; }
     section { background-color: #ffffff; border-radius: 1rem; }
     footer { background-color: #f3f4f6; }
-
-    /* Lien catalogue visible directement + effet zoom */
     .catalogue-container {
       position: relative;
       overflow: hidden;
       border-radius: 1rem;
     }
-
     .catalogue-container img {
       transition: transform 0.7s ease;
     }
-
     .catalogue-container:hover img {
       transform: scale(1.05);
     }
-
     .catalogue-overlay {
       position: absolute;
       bottom: 0;
@@ -115,7 +95,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="sticky top-0 z-50 w-full shadow-sm">
     <div class="px-6 py-5 flex items-center justify-between header-anim w-full flex-nowrap">
       <div class="flex items-center gap-4">
@@ -133,10 +112,8 @@
     </div>
   </header>
 
-  <!-- Main -->
   <main class="w-full px-6 py-12 space-y-16">
 
-    <!-- Hero -->
     <section class="grid md:grid-cols-2 gap-10 items-center fade-in w-full px-6">
       <div>
         <h1 class="text-4xl font-bold mb-4" style="color: var(--logo-green);">Votre interlocuteur Dirickx au Luxembourg</h1>
@@ -152,7 +129,6 @@
         </div>
       </div>
 
-      <!-- IMAGE + LIEN CATALOGUE visible directement + zoom hover -->
       <div class="catalogue-container fade-in w-full">
         <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener" class="block relative">
           <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" loading="lazy" />
@@ -163,7 +139,6 @@
       </div>
     </section>
 
-    <!-- Produits -->
     <section id="produits" class="p-8 shadow-sm fade-in w-full px-6">
       <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--logo-green);">Solutions Dirickx</h3>
       <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
@@ -186,7 +161,6 @@
       </div>
     </section>
 
-    <!-- Zone (carte satellite + marqueur Luxmeca) -->
     <section id="zone" class="grid md:grid-cols-2 gap-10 items-center fade-in w-full px-6">
       <div>
         <h3 class="text-2xl font-semibold mb-3" style="color: var(--logo-green);">Zone couverte</h3>
@@ -196,19 +170,11 @@
         <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
       </div>
 
-      <!-- Carte satellite centrée et avec point de localisation (pin) -->
-      <!--
-        Pour afficher clairement un marqueur (pin) et la vue satellite, l'URL ci-dessous utilise :
-        - q= (requête avec le nom + adresse) pour forcer l'affichage du marqueur,
-        - z=-10000000 pour un zoom rapproché,
-        - t=k pour la vue satellite (terrain/k = satellite in this embedding),
-        - output=embed pour l'iframe.
-      -->
       <div class="rounded-xl overflow-hidden shadow-lg w-full">
         <iframe
-          title="Lux-Méca SA - Ehlerange (satellite + point)"
+          title="Lux-Méca SA – localisation régionale"
           class="w-full h-64"
-          src="https://www.google.com/maps?q=Lux+M%C3%A9ca+s.a.,+15-17+ZARE+Il%C3%B4t+Est,+L-4385+Ehlerange,+Luxembourg&z=17&t=k&output=embed"
+          src="https://www.google.com/maps?q=Lux+M%C3%A9ca+s.a.,+15-17+ZARE+Il%C3%B4t+Est,+L-4385+Ehlerange,+Luxembourg&z=12&t=k&output=embed"
           style="border:0;"
           allowfullscreen
           loading="lazy"
@@ -217,7 +183,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="p-8 shadow-sm fade-in w-full px-6">
       <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--logo-green);">Contact</h3>
       <div class="grid md:grid-cols-2 gap-10 w-full">
@@ -233,7 +198,6 @@
           <p class="mt-2 text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" style="color: var(--logo-green);" class="hover:underline">dirickx.fr</a></p>
         </div>
 
-        <!-- Formulaire de contact conservé -->
         <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-4 w-full">
           <div>
             <label class="block text-sm font-medium">Nom</label>
@@ -256,7 +220,6 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="text-center text-sm text-gray-500 fade-in pt-8 border-t border-gray-200 w-full">
       © <script>document.write(new Date().getFullYear())</script> Dirickx — Chargé d'affaire Luxembourg · Stéphane Winckel · Luxmeca SA ·
       <a href="/mentions-legales.html" class="hover:underline text-gray-600">Mentions légales</a>
