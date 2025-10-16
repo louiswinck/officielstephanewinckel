@@ -8,44 +8,29 @@
 
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-      background-color: #f9fafb;
-      color: #111827;
-    }
-
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background-color: #f9fafb; color: #111827; }
     a { transition: all 0.3s ease-in-out; }
-
     .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease-out forwards; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-
     .header-anim { opacity: 0; transform: translateY(-20px); animation: headerDrop 0.8s ease-out forwards; animation-delay: 0.3s; }
     @keyframes headerDrop { to { opacity: 1; transform: translateY(0); } }
-
     .logo-anim { opacity: 0; transform: translateY(-15px); animation: logoEntry 1s ease-out forwards; animation-delay: 0.6s; transition: transform 0.4s ease; }
     @keyframes logoEntry { to { opacity: 1; transform: translateY(0); } }
     .logo-anim:hover { transform: scale(1.08) rotate(-2deg); }
-
     .btn { transition: all 0.3s ease-in-out; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
-
     :root { --logo-green: #1f5e2c; }
     .btn-green { background-color: var(--logo-green); color: #fff; }
     .btn-green:hover { background-color: #16401a; }
     .btn-outline-green { border: 2px solid var(--logo-green); color: var(--logo-green); }
     .btn-outline-green:hover { background-color: var(--logo-green); color: #fff; }
-
     header { background-color: #ffffff; }
     section { background-color: #ffffff; border-radius: 1rem; }
     footer { background-color: #f3f4f6; }
-
     .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; }
     .catalogue-container img { transition: transform 0.7s ease; }
     .catalogue-container:hover img { transform: scale(1.05); }
@@ -96,7 +81,6 @@
         </div>
       </div>
 
-      <!-- Image + lien catalogue -->
       <div class="catalogue-container fade-in w-full">
         <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener">
           <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" loading="lazy" />
@@ -104,29 +88,6 @@
             📘 <span>Catalogue Dirickx</span>
           </div>
         </a>
-      </div>
-    </section>
-
-    <!-- Produits -->
-    <section id="produits" class="p-8 shadow-sm fade-in w-full px-6">
-      <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--logo-green);">Solutions Dirickx</h3>
-      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
-        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
-          <h4 class="font-medium" style="color: var(--logo-green);">Clôtures & Treillis</h4>
-          <p class="text-gray-700 text-sm mt-2">Robustes, adaptées aux collectivités et sites industriels.</p>
-        </article>
-        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
-          <h4 class="font-medium" style="color: var(--logo-green);">Portails & Motorisation</h4>
-          <p class="text-gray-700 text-sm mt-2">Solutions sur-mesure pour accès piéton et véhicules.</p>
-        </article>
-        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
-          <h4 class="font-medium" style="color: var(--logo-green);">Contrôle d’accès & Sécurité</h4>
-          <p class="text-gray-700 text-sm mt-2">Systèmes intégrés pour la protection périmétrique.</p>
-        </article>
-        <article class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition">
-          <h4 class="font-medium" style="color: var(--logo-green);">Maintenance & Service</h4>
-          <p class="text-gray-700 text-sm mt-2">Réseau d'installateurs et service après-vente dédiés.</p>
-        </article>
       </div>
     </section>
 
@@ -140,10 +101,11 @@
         <p class="text-sm text-gray-500">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
       </div>
 
-      <!-- Carte avec repère clair sur Luxmeca -->
+      <!-- Carte satellite (vue moins zoomée) -->
       <div class="rounded-xl overflow-hidden shadow-lg w-full">
-        <iframe title="Luxmeca Ehlerange" class="w-full h-64"
-                src="https://www.google.com/maps?q=Luxmeca%2C+15-17+ZARE+Il%C3%B4t+Est%2C+L-4385+Ehlerange%2C+Luxembourg&output=embed"
+        <iframe title="Luxmeca Ehlerange - Vue satellite"
+                class="w-full h-64"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10463.592581230724!2d5.9323!3d49.5076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47955b7014abef65%3A0x3a4b09c6ec62b2a8!2sLux-M%C3%A9ca%20S.A.!5e0!3m2!1sfr!2slu!4v1699983600000&maptype=satellite"
                 frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </section>
@@ -164,7 +126,7 @@
           <p class="mt-2 text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" style="color: var(--logo-green);" class="hover:underline">dirickx.fr</a></p>
         </div>
 
-        <!-- Formulaire de contact conservé -->
+        <!-- Formulaire de contact -->
         <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-4 w-full">
           <div>
             <label class="block text-sm font-medium">Nom</label>
@@ -192,7 +154,6 @@
       © <script>document.write(new Date().getFullYear())</script> Dirickx — Chargé d'affaire Luxembourg · Stéphane Winckel · Luxmeca SA ·
       <a href="/mentions-legales.html" class="hover:underline text-gray-600">Mentions légales</a>
     </footer>
-
   </main>
 
   <script>
