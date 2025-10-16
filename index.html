@@ -186,22 +186,29 @@
       </div>
     </section>
 
-    <!-- Zone -->
+    <!-- Zone (carte satellite + marqueur Luxmeca) -->
     <section id="zone" class="grid md:grid-cols-2 gap-10 items-center fade-in w-full px-6">
       <div>
         <h3 class="text-2xl font-semibold mb-3" style="color: var(--logo-green);">Zone couverte</h3>
         <p class="text-gray-700 mb-4 leading-relaxed">
-          Intervention sur l'ensemble du Luxembourg. Basé à <strong>Ehlerange</strong> au sein de <strong>Luxmeca SA</strong>.
+          Intervention sur l'ensemble du Luxembourg. Basé à <strong>Ehlerange</strong> au sein de <strong>Lux-Méca SA</strong>.
         </p>
         <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
       </div>
 
-      <!-- Carte centrée sur Luxmeca SA avec vue satellite -->
+      <!-- Carte satellite centrée et avec point de localisation (pin) -->
+      <!--
+        Pour afficher clairement un marqueur (pin) et la vue satellite, l'URL ci-dessous utilise :
+        - q= (requête avec le nom + adresse) pour forcer l'affichage du marqueur,
+        - z=10 pour un zoom rapproché,
+        - t=k pour la vue satellite (terrain/k = satellite in this embedding),
+        - output=embed pour l'iframe.
+      -->
       <div class="rounded-xl overflow-hidden shadow-lg w-full">
-        <iframe 
-          title="Luxmeca SA - Ehlerange" 
+        <iframe
+          title="Lux-Méca SA - Ehlerange (satellite + point)"
           class="w-full h-64"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.324928184143!2d5.93385921571863!3d49.501824579355955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47954c02a4270a8f%3A0xd48914ef09f9eaf0!2sLux%20M%C3%A9ca%20s.a.!5e0!3m2!1sfr!2slu!4v1739635670000!5m2!1sfr!2slu"
+          src="https://www.google.com/maps?q=Lux+M%C3%A9ca+s.a.,+15-17+ZARE+Il%C3%B4t+Est,+L-4385+Ehlerange,+Luxembourg&z=17&t=k&output=embed"
           style="border:0;"
           allowfullscreen
           loading="lazy"
