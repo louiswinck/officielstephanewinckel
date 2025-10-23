@@ -1,175 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ProOnePage — Page pro en 72h · 149€</title>
-  <meta name="description" content="ProOnePage — Je crée votre page web professionnelle, rapide et responsive. Idéal pour artisans, indépendants et petites entreprises. Livraison en 72h." />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="ProOnePage — Page pro en 72h · 149€" />
-  <meta property="og:description" content="Page web simple, design pro, formulaire de contact et optimisation locale. Démo: officielstephanewinckel.vercel.app" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=ProOnePage" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stéphane Winckel — Chargé d'affaire Dirickx Luxembourg. Solutions de clôtures, portails et sécurité périmétrique pour le Luxembourg." />
+  <title>Dirickx Luxembourg – Stéphane Winckel</title>
 
-  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root { --brand: #001f3f; } /* Bleu marine */
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #111; }
-    .btn { transition: all .18s ease; }
-    .btn:hover { transform: translateY(-3px); }
-    header { backdrop-filter: saturate(120%) blur(4px); }
-    .fade { opacity: 0; transform: translateY(12px); animation: fade .6s forwards; }
-    @keyframes fade { to { opacity: 1; transform: none; } }
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    a { transition: all 0.3s ease-in-out; }
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease-out forwards; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    .header-anim { opacity: 0; transform: translateY(-20px); animation: headerDrop 0.8s ease-out forwards; animation-delay: 0.3s; }
+    @keyframes headerDrop { to { opacity: 1; transform: translateY(0); } }
+    .logo-anim { opacity: 0; transform: translateY(-15px); animation: logoEntry 1s ease-out forwards; animation-delay: 0.6s; transition: transform 0.4s ease; }
+    .logo-anim:hover { transform: scale(1.08) rotate(-2deg); }
+    @keyframes logoEntry { to { opacity: 1; transform: translateY(0); } }
+    .btn { transition: all 0.3s ease-in-out; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+    :root { --logo-green: #1f5e2c; }
+    .btn-green { background-color: var(--logo-green); color: #fff; }
+    .btn-green:hover { background-color: #16401a; }
+    .btn-outline-green { border: 2px solid var(--logo-green); color: var(--logo-green); }
+    .btn-outline-green:hover { background-color: var(--logo-green); color: #fff; }
+    header { background-color: #ffffff; }
+    section { background-color: #ffffff; border-radius: 1rem; padding: 3rem 2rem; }
+    footer { background-color: #f3f4f6; padding: 2rem; }
+    .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; margin-top: 1rem; }
+    .catalogue-container img { transition: transform 0.7s ease; }
+    .catalogue-container:hover img { transform: scale(1.05); }
+    .catalogue-overlay {
+      position: absolute; bottom: 0; right: 0; width: 100%;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+      color: white; padding: 1.5rem 2rem; font-weight: 500; font-size: 1.1rem;
+      border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;
+      display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem;
+    }
+    .section-title { margin-bottom: 1.5rem; }
+    .contact-info p { margin-bottom: 0.75rem; }
   </style>
 </head>
+<body>
 
-<body class="bg-gray-50 leading-relaxed">
-
-  <!-- HEADER -->
-  <header class="sticky top-0 z-40 bg-white/90 border-b border-gray-200">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+  <header class="sticky top-0 z-50 w-full shadow-sm">
+    <div class="px-6 py-6 flex items-center justify-between header-anim w-full flex-nowrap">
       <div class="flex items-center gap-4">
-        <div class="w-10 h-10 rounded-md bg-[var(--brand)] flex items-center justify-center text-white font-semibold">P1</div>
+        <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
         <div>
-          <div class="text-lg font-semibold" style="color:var(--brand)">ProOnePage</div>
-          <div class="text-xs text-gray-500">Page pro en 72h — 149€</div>
+          <p class="text-lg font-semibold" style="color: var(--logo-green);">Stéphane Winckel</p>
+          <p class="text-sm text-gray-500">Chargé d'affaire · Dirickx — Luxembourg</p>
         </div>
       </div>
-      <nav class="flex items-center gap-4 text-sm">
-        <a href="#offre" class="hover:underline">Offre</a>
-        <a href="#exemples" class="hover:underline">Exemple</a>
-        <a href="#contact" class="btn bg-[var(--brand)] text-white px-4 py-2 rounded-md">Commander</a>
-      </nav>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stephane.winckel@luxmeca.lu&body=Bonjour%20Stéphane," 
+         target="_blank" 
+         class="btn btn-green px-4 py-2 rounded-md text-sm font-medium">
+         Envoyer un mail
+      </a>
     </div>
   </header>
 
-  <!-- MAIN -->
-  <main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
+  <main class="w-full px-6 py-16 space-y-20">
 
-    <!-- HERO -->
-    <section class="grid md:grid-cols-2 gap-10 items-center">
-      <div class="fade">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4" style="color:var(--brand)">Une page web pro, rapide et visible — livrée en 72h</h1>
-        <p class="text-gray-700 mb-6">ProOnePage conçoit pour vous une page unique (one-page) : claire, responsive et optimisée pour être trouvée localement. Idéale pour artisans, indépendants, commerciaux et petites entreprises.</p>
-        <ul class="space-y-2 text-gray-700 mb-6">
-          <li>✔ Design professionnel personnalisé</li>
-          <li>✔ Contenu structuré : présentation, services, carte & formulaire</li>
-          <li>✔ Optimisation locale pour Google</li>
-          <li>✔ Livraison en <strong>72 heures</strong></li>
+    <section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
+      <div>
+        <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--logo-green);">Votre interlocuteur Dirickx sur la grande région</h1>
+        <p class="text-gray-700 mb-6 leading-relaxed">Je représente Dirickx sur toute la grande région. J'accompagne collectivités, entreprises et particuliers dans leurs projets de clôture, contrôle d'accès et protection périmétrique.</p>
+        <ul class="space-y-3 text-gray-700">
+          <li>🔹 Diagnostics & conseils sur-mesure</li>
+          <li>🔹 Solutions complètes : clôtures, portails, motorisations, systèmes anti-intrusion</li>
+          <li>🔹 Suivi de projet</li>
         </ul>
-        <div class="flex gap-3">
-          <a href="#contact" class="btn bg-[var(--brand)] text-white px-5 py-3 rounded-md">Commander — 149€</a>
-          <a href="#exemples" class="btn border border-[var(--brand)] text-[var(--brand)] px-5 py-3 rounded-md">Voir la démo</a>
+        <div class="mt-10 flex flex-wrap gap-5">
+          <a href="#contact" class="btn btn-green px-6 py-3 rounded-md">Me contacter</a>
+          <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" class="btn btn-outline-green px-6 py-3 rounded-md text-sm font-medium">Découvrir Dirickx</a>
         </div>
       </div>
 
-      <div class="fade">
-        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-          <img src="https://via.placeholder.com/800x480.png?text=Exemple+ProOnePage" alt="Aperçu ProOnePage" class="w-full h-56 object-cover" />
-          <div class="p-5">
-            <p class="text-sm text-gray-500">Exemple : site Dirickx Luxembourg — design sobre et création rapide.</p>
-            <div class="mt-3">
-              <a href="https://officielstephanewinckel.vercel.app" target="_blank" rel="noopener" class="text-sm text-[var(--brand)] hover:underline">Voir la démo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OFFRE -->
-    <section id="offre" class="bg-white rounded-xl p-8 shadow-sm fade">
-      <h2 class="text-2xl font-semibold mb-4" style="color:var(--brand)">Ce qui est inclus — Formule unique • 149€</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-4 border rounded">
-          <h4 class="font-medium mb-2">Design personnalisé</h4>
-          <p class="text-sm text-gray-600">Couleurs, logo, typographie et accroche adaptés à votre activité.</p>
-        </div>
-        <div class="p-4 border rounded">
-          <h4 class="font-medium mb-2">Contenu & contact</h4>
-          <p class="text-sm text-gray-600">Sections présentation, services, carte & formulaire de contact opérationnel.</p>
-        </div>
-        <div class="p-4 border rounded">
-          <h4 class="font-medium mb-2">Mise en ligne rapide</h4>
-          <p class="text-sm text-gray-600">Hébergement simple (ou livraison des fichiers) + nom de domaine en option.</p>
-        </div>
-      </div>
-
-      <div class="mt-6 bg-gray-50 p-4 rounded border text-center">
-        <div class="text-sm text-gray-500">Prix clair</div>
-        <div class="mt-2 text-3xl font-bold" style="color:var(--brand)">149€</div>
-        <div class="text-sm text-gray-500">Livré en 72h après validation des éléments</div>
-        <a href="#contact" class="mt-4 inline-block bg-[var(--brand)] text-white px-4 py-2 rounded-md">Commander maintenant</a>
-      </div>
-    </section>
-
-    <!-- EXEMPLE -->
-    <section id="exemples" class="bg-white rounded-xl p-6 shadow-sm fade">
-      <h3 class="text-2xl font-semibold mb-4" style="color:var(--brand)">Exemple de site</h3>
-      <div class="grid md:grid-cols-1 gap-4">
-        <a href="https://officielstephanewinckel.vercel.app" target="_blank" rel="noopener" class="block rounded overflow-hidden border hover:shadow">
-          <img src="https://via.placeholder.com/600x360.png?text=Dirickx+Demo" alt="Démo Stephane" class="w-full h-40 object-cover" />
-          <div class="p-3 text-sm">Chargé d'affaire — Clôtures & sécurité (Luxembourg)</div>
+      <div class="catalogue-container fade-in w-full">
+        <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank" rel="noopener" class="block relative">
+          <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" loading="lazy" />
+          <div class="catalogue-overlay">📘 <span>Catalogue Dirickx</span></div>
         </a>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="bg-white rounded-xl p-8 shadow-sm fade">
-      <h3 class="text-2xl font-semibold mb-4" style="color:var(--brand)">Commander / Contact</h3>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <p class="text-gray-700 mb-4">
-            Prêt à lancer ? Remplis le formulaire ci-dessous ou envoie un message direct à 
-            <strong style="color:var(--brand)">proonepage.pro@gmail.com</strong>.
-          </p>
-          <ul class="text-sm text-gray-600 space-y-1">
-            <li>✔ Prix : 149€</li>
-            <li>✔ Livraison : 72 heures après validation</li>
-            <li>✔ Paiement : virement ou PayPal (à configurer)</li>
-          </ul>
+    <section id="zone" class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
+      <div>
+        <h3 class="text-2xl font-semibold mb-4 section-title" style="color: var(--logo-green);">Localisation</h3>
+        <p class="text-gray-700 mb-5 leading-relaxed">
+          <strong>Lux-Méca SA</strong> basé à <strong>Ehlerange</strong>, <u>au coeur de la grande région</u>.
+        </p>
+        <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
+      </div>
+
+      <div class="rounded-xl overflow-hidden shadow-lg w-full">
+        <iframe
+          title="Lux-Méca SA – localisation régionale"
+          class="w-full h-64"
+          src="https://www.google.com/maps?q=Lux+M%C3%A9ca+s.a.,+15-17+ZARE+Il%C3%B4t+Est,+L-4385+Ehlerange,+Luxembourg&z=10&t=k&output=embed"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <section id="contact" class="p-8 shadow-sm fade-in w-full px-6">
+      <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--logo-green);">Contact</h3>
+      <div class="grid md:grid-cols-2 gap-12 w-full">
+        <div class="contact-info">
+          <p class="text-gray-700 text-lg font-medium">Stéphane Winckel</p>
+          <p class="text-gray-500 mb-5">Chargé d'affaire - Dirickx Luxembourg / Luxmeca SA</p>
+          <p class="mt-2 text-sm">📞 <a href="tel:+352661686855" style="color: var(--logo-green);" class="hover:underline">+352 661 686 855</a></p>
+          <p class="mt-1 text-sm">✉️ <span style="color: var(--logo-green);">stephane.winckel@luxmeca.lu</span></p>
+          <p class="mt-1 text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" style="color: var(--logo-green);" class="hover:underline">Dirickx</a></p>
+          <p class="mt-1 text-sm">🌐 <a href="https://www.luxmeca.com/" target="_blank" rel="noopener" style="color: var(--logo-green);" class="hover:underline">LuxMéca</a></p>
+          <p class="mt-1 text-sm">🔗 <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank" rel="noopener" style="color: var(--logo-green);" class="hover:underline">Linkedin</a></p>
+          <p class="mt-4 text-sm text-gray-500">🕓 Lun–Ven 8:00–15:00</p>
+          <p class="mt-2 text-sm">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
         </div>
 
-        <!-- FORMULAIRE -->
-        <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-3">
-          <div>
-            <label class="text-sm font-medium">Nom / Entreprise</label>
-            <input name="name" required class="mt-1 block w-full rounded-md border px-3 py-2" />
-          </div>
-          <div>
-            <label class="text-sm font-medium">Email</label>
-            <input name="email" type="email" required class="mt-1 block w-full rounded-md border px-3 py-2" />
-          </div>
-          <div>
-            <label class="text-sm font-medium">Téléphone</label>
-            <input name="phone" class="mt-1 block w-full rounded-md border px-3 py-2" />
-          </div>
-          <div>
-            <label class="text-sm font-medium">Votre message / Brief</label>
-            <textarea name="message" rows="4" required class="mt-1 block w-full rounded-md border px-3 py-2"></textarea>
-          </div>
-
-          <!-- BOUTON -->
-          <button type="submit" 
-            class="w-full bg-[var(--brand)] text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-900 transition">
-            🚀 Envoyer le message
-          </button>
+        <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-5 w-full">
+          <div><label class="block text-sm font-medium">Nom</label><input name="name" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2" /></div>
+          <div><label class="block text-sm font-medium">Email</label><input name="email" type="email" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2" /></div>
+          <div><label class="block text-sm font-medium">Téléphone</label><input name="phone" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2" /></div>
+          <div><label class="block text-sm font-medium">Message</label><textarea name="message" rows="5" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"></textarea></div>
+          <button type="submit" class="btn btn-green px-5 py-3 rounded-md w-full">Envoyer</button>
         </form>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="text-sm text-gray-500 text-center py-8">
-      © <span id="year"></span> ProOnePage — Page pro en 72h · 149€
+    <footer class="text-center text-sm text-gray-500 fade-in pt-10 border-t border-gray-200 w-full">
+      © <script>document.write(new Date().getFullYear())</script> Dirickx — Chargé d'affaire Luxembourg · Stéphane Winckel · Luxmeca SA
     </footer>
 
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('.fade').forEach((el, i) => setTimeout(() => el.style.opacity = 1, 100 * i));
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
