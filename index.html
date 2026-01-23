@@ -11,13 +11,16 @@
   <script src="//code.tidio.co/mni8r03mp2mzr2tbuxz5csmxfimyp4zd.js" async></script>
 
   <style>
+    /* =========================
+       ADN VISUEL LUXMECA (ROUGE)
+    ========================== */
     :root {
-      --primary: #0F1E3A;
-      --primary-dark: #0a1526;
-      --gray-light: #F9FAFB;
-      --gray-border: #E5E7EB;
-      --text-main: #1F2937;
+      --lux-red: #C1121F;
+      --lux-red-dark: #8f0d16;
+      --text-main: #111827;
       --text-muted: #6B7280;
+      --gray-bg: #F5F5F5;
+      --gray-border: #E5E7EB;
     }
 
     body {
@@ -25,78 +28,121 @@
       background-color: #ffffff;
       color: var(--text-main);
       scroll-behavior: smooth;
-      line-height: 1.6;
     }
 
-    a { transition: all 0.25s ease; }
+    a { transition: all 0.3s ease-in-out; }
 
+    /* =====================
+       ANIMATIONS (CONSERVÉES)
+    ===================== */
     .fade-in {
       opacity: 0;
-      transform: translateY(15px);
-      animation: fadeIn 0.6s ease-out forwards;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
     }
 
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    header {
-      background-color: #ffffff;
-      border-bottom: 1px solid var(--gray-border);
+    .header-anim {
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: headerDrop 0.8s ease-out forwards;
     }
 
+    @keyframes headerDrop {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-anim {
+      opacity: 0;
+      transform: translateY(-15px);
+      animation: logoEntry 1s ease-out forwards;
+      animation-delay: 0.6s;
+      transition: transform 0.4s ease;
+    }
+
+    .logo-anim:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes logoEntry {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =====================
+       HEADER
+    ===================== */
+    header {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--lux-red);
+    }
+
+    /* =====================
+       BOUTONS
+    ===================== */
     .btn {
-      font-weight: 500;
-      border-radius: 0.35rem;
-      transition: background-color 0.25s ease;
+      font-weight: 600;
+      border-radius: 0.25rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
     }
 
     .btn-green {
-      background-color: var(--primary);
+      background-color: var(--lux-red);
       color: #ffffff;
     }
 
     .btn-green:hover {
-      background-color: var(--primary-dark);
+      background-color: var(--lux-red-dark);
     }
 
     .btn-outline-green {
-      border: 2px solid var(--primary);
-      color: var(--primary);
+      border: 2px solid var(--lux-red);
+      color: var(--lux-red);
       background: transparent;
     }
 
     .btn-outline-green:hover {
-      background-color: var(--primary);
+      background-color: var(--lux-red);
       color: #ffffff;
     }
 
+    /* =====================
+       SECTIONS
+    ===================== */
     section {
       background-color: #ffffff;
-      border-radius: 0.75rem;
       padding: 3rem 2rem;
     }
 
     .section-title {
       display: inline-block;
       padding-bottom: 0.4rem;
-      border-bottom: 3px solid var(--primary);
+      border-bottom: 4px solid var(--lux-red);
       margin-bottom: 1.5rem;
     }
 
+    /* =====================
+       CATALOGUE
+    ===================== */
     .catalogue-container {
       position: relative;
       overflow: hidden;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-top: 1rem;
     }
 
     .catalogue-container img {
-      transition: transform 0.6s ease;
+      transition: transform 0.7s ease;
     }
 
     .catalogue-container:hover img {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     .catalogue-overlay {
@@ -104,23 +150,42 @@
       bottom: 0;
       right: 0;
       width: 100%;
-      background: linear-gradient(transparent, rgba(0,0,0,0.6));
-      color: #ffffff;
-      padding: 1.25rem 2rem;
-      font-weight: 500;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+      color: white;
+      padding: 1.4rem 2rem;
+      font-weight: 600;
+      font-size: 1.05rem;
       display: flex;
       justify-content: flex-end;
       gap: 0.5rem;
     }
 
+    /* =====================
+       CONTACT
+    ===================== */
     #contact {
-      background-color: var(--gray-light);
+      background-color: var(--gray-bg);
     }
 
+    #contact input,
+    #contact textarea {
+      border: 1px solid var(--gray-border);
+      border-radius: 0.25rem;
+    }
+
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: none;
+      border-color: var(--lux-red);
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
     footer {
-      background-color: #F3F4F6;
-      color: var(--text-muted);
-      border-top: 1px solid var(--gray-border);
+      background-color: #111;
+      color: #d1d5db;
+      border-top: 4px solid var(--lux-red);
       padding: 2rem;
       font-size: 0.875rem;
     }
@@ -130,17 +195,17 @@
 <body>
 
 <header class="sticky top-0 z-50 w-full shadow-sm">
-  <div class="px-6 py-6 flex items-center justify-between w-full flex-nowrap">
+  <div class="px-6 py-6 flex items-center justify-between header-anim w-full flex-nowrap">
     <div class="flex items-center gap-4">
-      <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto" />
+      <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
       <div>
-        <p class="text-lg font-semibold" style="color: var(--primary);">Stéphane Winckel</p>
+        <p class="text-lg font-semibold" style="color: var(--lux-red);">Stéphane Winckel</p>
         <p class="text-sm text-gray-500">Chargé d'affaires · DIRICKX — Luxembourg</p>
       </div>
     </div>
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stephane.winckel@luxmeca.lu&body=Bonjour%20Stéphane,"
        target="_blank"
-       class="btn btn-green px-4 py-2 text-sm">
+       class="btn btn-green px-4 py-2 rounded-md text-sm">
       Envoyer un mail
     </a>
   </div>
@@ -151,14 +216,22 @@
   <!-- HERO -->
   <section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
     <div>
-      <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--primary);">
+      <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--lux-red);">
         Votre interlocuteur DIRICKX sur la grande région
       </h1>
-      <p class="text-gray-700 mb-6">
+      <p class="text-gray-700 mb-6 leading-relaxed">
         Je représente DIRICKX sur toute la grande région. J'accompagne collectivités,
-        entreprises et particuliers dans leurs projets de clôture.
+        entreprises et particuliers dans leurs projets de clôture, contrôle d'accès
+        et protection périmétrique.
       </p>
-      <div class="mt-8 flex gap-5">
+
+      <ul class="space-y-3 text-gray-700">
+        <li>🔹 Diagnostics & conseils sur-mesure</li>
+        <li>🔹 Solutions complètes : clôtures, portails, motorisations</li>
+        <li>🔹 Suivi de projet</li>
+      </ul>
+
+      <div class="mt-10 flex flex-wrap gap-5">
         <a href="#contact" class="btn btn-green px-6 py-3">Me contacter</a>
         <a href="https://www.dirickx.fr/" target="_blank"
            class="btn btn-outline-green px-6 py-3">
@@ -177,7 +250,7 @@
 
   <!-- CONTACT -->
   <section id="contact" class="fade-in w-full">
-    <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--primary);">
+    <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--lux-red);">
       Contact
     </h3>
     <p class="text-center text-gray-600">
@@ -187,7 +260,7 @@
 
   <footer class="text-center fade-in pt-10 w-full">
     © <script>document.write(new Date().getFullYear())</script>
-    DIRICKX — Stéphane Winckel · LuxMéca SA
+    DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · LuxMéca SA
   </footer>
 
 </main>
