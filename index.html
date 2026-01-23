@@ -12,7 +12,7 @@
 
   <style>
     /* ==========================
-       DIRICKX × LUXMÉCA – DARK
+       DIRICKX × LUXMÉCA – DARK / ROUGE
     ========================== */
     body {
       font-family: 'Inter', sans-serif;
@@ -37,8 +37,6 @@
 
     /* Palette couleurs */
     :root {
-      --dirickx-green: #1f5e2c;
-      --dirickx-green-dark: #16401a;
       --luxmeca-red: #c1121f;
       --luxmeca-red-dark: #8e0d15;
       --dark-bg: #0f0f0f;
@@ -51,17 +49,18 @@
     /* Boutons */
     .btn { transition: all 0.3s ease-in-out; font-weight: 600; border-radius: 0.4rem; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
-    .btn-green { background-color: var(--luxmeca-red); color: #fff; }
-    .btn-green:hover { background-color: var(--luxmeca-red-dark); }
-    .btn-outline-green { border: 2px solid var(--dirickx-green); color: var(--dirickx-green); background: transparent; }
-    .btn-outline-green:hover { background-color: var(--luxmeca-red); color: #fff; border-color: var(--luxmeca-red); }
+    .btn-green, .btn-outline-green {
+      background-color: var(--luxmeca-red);
+      color: #fff;
+      border: 2px solid var(--luxmeca-red);
+    }
+    .btn-green:hover, .btn-outline-green:hover { background-color: var(--luxmeca-red-dark); border-color: var(--luxmeca-red-dark); }
 
     /* Header */
     header { background-color: #0b0b0b; border-bottom: 1px solid var(--dark-border); }
 
     /* Sections */
     section { background-color: var(--dark-section); border-radius: 1rem; padding: 3rem 2rem; border: 1px solid var(--dark-border); }
-
     .section-title { margin-bottom: 1.5rem; color: var(--luxmeca-red); }
 
     /* Catalogue */
@@ -91,7 +90,7 @@
     <div class="flex items-center gap-4">
       <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
       <div>
-        <p class="text-lg font-semibold" style="color: var(--dirickx-green);">Stéphane Winckel</p>
+        <p class="text-lg font-semibold" style="color: var(--luxmeca-red);">Stéphane Winckel</p>
         <p class="text-sm text-gray-400">Chargé d'affaires · DIRICKX — Luxembourg</p>
       </div>
     </div>
@@ -108,7 +107,7 @@
   <!-- HERO / Section principale -->
   <section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
     <div>
-      <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--dirickx-green);">Votre interlocuteur DIRICKX sur la grande région</h1>
+      <h1 class="text-4xl font-bold mb-6 section-title">Votre interlocuteur DIRICKX sur la grande région</h1>
       <p class="text-gray-300 mb-6 leading-relaxed">Je représente DIRICKX sur toute la grande région. J'accompagne collectivités, entreprises et particuliers dans leurs projets de clôture, contrôle d'accès et protection périmétrique.</p>
       <ul class="space-y-3 text-gray-300">
         <li>🔹 Diagnostics & conseils sur-mesure</li>
@@ -131,7 +130,7 @@
   <!-- LOCALISATION -->
   <section id="zone" class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
     <div>
-      <h3 class="text-2xl font-semibold mb-4 section-title" style="color: var(--dirickx-green);">Localisation</h3>
+      <h3 class="text-2xl font-semibold mb-4 section-title">Localisation</h3>
       <p class="text-gray-300 mb-5"><strong>Lux-Méca SA</strong> basé à <strong>Ehlerange</strong>, <u>au cœur de la grande région</u>.</p>
       <p class="text-sm text-gray-400">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
     </div>
@@ -142,7 +141,7 @@
 
   <!-- CONTACT -->
   <section id="contact" class="p-8 shadow-sm fade-in w-full px-6">
-    <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--dirickx-green);">Contact</h3>
+    <h3 class="text-2xl font-semibold mb-8 text-center section-title">Contact</h3>
     <div class="grid md:grid-cols-2 gap-12 w-full">
       <div class="contact-info">
         <p class="text-gray-100 text-lg font-medium">Stéphane Winckel</p>
