@@ -11,9 +11,6 @@
   <script src="//code.tidio.co/mni8r03mp2mzr2tbuxz5csmxfimyp4zd.js" async></script>
 
   <style>
-    /* =====================
-       BASE – STYLE LUXMECA
-    ===================== */
     :root {
       --primary: #0F1E3A;
       --primary-dark: #0a1526;
@@ -21,7 +18,6 @@
       --gray-border: #E5E7EB;
       --text-main: #1F2937;
       --text-muted: #6B7280;
-      --logo-green: #1f5e2c; /* conservé mais plus discret */
     }
 
     body {
@@ -32,13 +28,8 @@
       line-height: 1.6;
     }
 
-    a {
-      transition: all 0.25s ease;
-    }
+    a { transition: all 0.25s ease; }
 
-    /* =====================
-       ANIMATIONS (sobres)
-    ===================== */
     .fade-in {
       opacity: 0;
       transform: translateY(15px);
@@ -49,42 +40,15 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .header-anim {
-      opacity: 0;
-      transform: translateY(-10px);
-      animation: headerDrop 0.6s ease-out forwards;
-    }
-
-    @keyframes headerDrop {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .logo-anim {
-      opacity: 0;
-      transform: translateY(-10px);
-      animation: logoEntry 0.6s ease-out forwards;
-      animation-delay: 0.2s;
-    }
-
-    @keyframes logoEntry {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* =====================
-       HEADER
-    ===================== */
     header {
       background-color: #ffffff;
       border-bottom: 1px solid var(--gray-border);
     }
 
-    /* =====================
-       BOUTONS
-    ===================== */
     .btn {
       font-weight: 500;
       border-radius: 0.35rem;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      transition: background-color 0.25s ease;
     }
 
     .btn-green {
@@ -107,9 +71,6 @@
       color: #ffffff;
     }
 
-    /* =====================
-       SECTIONS
-    ===================== */
     section {
       background-color: #ffffff;
       border-radius: 0.75rem;
@@ -123,9 +84,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* =====================
-       CATALOGUE
-    ===================== */
     .catalogue-container {
       position: relative;
       overflow: hidden;
@@ -150,36 +108,15 @@
       color: #ffffff;
       padding: 1.25rem 2rem;
       font-weight: 500;
-      font-size: 1rem;
       display: flex;
       justify-content: flex-end;
-      align-items: center;
       gap: 0.5rem;
     }
 
-    /* =====================
-       CONTACT
-    ===================== */
     #contact {
       background-color: var(--gray-light);
     }
 
-    #contact input,
-    #contact textarea {
-      border: 1px solid #D1D5DB;
-      border-radius: 0.35rem;
-      padding: 0.65rem;
-    }
-
-    #contact input:focus,
-    #contact textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    /* =====================
-       FOOTER
-    ===================== */
     footer {
       background-color: #F3F4F6;
       color: var(--text-muted);
@@ -193,9 +130,9 @@
 <body>
 
 <header class="sticky top-0 z-50 w-full shadow-sm">
-  <div class="px-6 py-6 flex items-center justify-between header-anim w-full flex-nowrap">
+  <div class="px-6 py-6 flex items-center justify-between w-full flex-nowrap">
     <div class="flex items-center gap-4">
-      <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
+      <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto" />
       <div>
         <p class="text-lg font-semibold" style="color: var(--primary);">Stéphane Winckel</p>
         <p class="text-sm text-gray-500">Chargé d'affaires · DIRICKX — Luxembourg</p>
@@ -211,8 +148,47 @@
 
 <main class="w-full px-6 py-16 space-y-20">
 
-  <!-- LE RESTE DU HTML EST STRICTEMENT IDENTIQUE -->
-  <!-- (inchangé volontairement) -->
+  <!-- HERO -->
+  <section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
+    <div>
+      <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--primary);">
+        Votre interlocuteur DIRICKX sur la grande région
+      </h1>
+      <p class="text-gray-700 mb-6">
+        Je représente DIRICKX sur toute la grande région. J'accompagne collectivités,
+        entreprises et particuliers dans leurs projets de clôture.
+      </p>
+      <div class="mt-8 flex gap-5">
+        <a href="#contact" class="btn btn-green px-6 py-3">Me contacter</a>
+        <a href="https://www.dirickx.fr/" target="_blank"
+           class="btn btn-outline-green px-6 py-3">
+          Découvrir DIRICKX
+        </a>
+      </div>
+    </div>
+
+    <div class="catalogue-container fade-in w-full">
+      <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank">
+        <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" />
+        <div class="catalogue-overlay">📘 Catalogue DIRICKX</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in w-full">
+    <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--primary);">
+      Contact
+    </h3>
+    <p class="text-center text-gray-600">
+      📞 +352 661 686 855 — ✉️ stephane.winckel@luxmeca.lu
+    </p>
+  </section>
+
+  <footer class="text-center fade-in pt-10 w-full">
+    © <script>document.write(new Date().getFullYear())</script>
+    DIRICKX — Stéphane Winckel · LuxMéca SA
+  </footer>
 
 </main>
 
