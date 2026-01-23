@@ -12,195 +12,75 @@
 
   <style>
     /* ==========================
-       DIRICKX × LUXMÉCA THEME
+       DIRICKX × LUXMÉCA – DARK
     ========================== */
-    :root {
-      --dirickx-green: #1f5e2c;
-      --dirickx-green-dark: #16401a;
-      --luxmeca-red: #c1121f;
-      --text-main: #111827;
-      --text-muted: #6b7280;
-      --gray-bg: #f9fafb;
-      --gray-border: #e5e7eb;
-    }
-
     body {
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
-      background-color: #ffffff;
-      color: var(--text-main);
+      background-color: #0f0f0f;
+      color: #e5e7eb;
     }
 
     a { transition: all 0.3s ease-in-out; }
 
-    /* =====================
-       ANIMATIONS (ORIGINE)
-    ===================== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease-out forwards;
+    /* Animations conservées */
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease-out forwards; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+    .header-anim { opacity: 0; transform: translateY(-20px); animation: headerDrop 0.8s ease-out forwards; animation-delay: 0.3s; }
+    @keyframes headerDrop { to { opacity: 1; transform: translateY(0); } }
+
+    .logo-anim { opacity: 0; transform: translateY(-15px); animation: logoEntry 1s ease-out forwards; animation-delay: 0.6s; transition: transform 0.4s ease; }
+    .logo-anim:hover { transform: scale(1.08) rotate(-2deg); }
+    @keyframes logoEntry { to { opacity: 1; transform: translateY(0); } }
+
+    /* Palette couleurs */
+    :root {
+      --dirickx-green: #1f5e2c;
+      --dirickx-green-dark: #16401a;
+      --luxmeca-red: #c1121f;
+      --luxmeca-red-dark: #8e0d15;
+      --dark-bg: #0f0f0f;
+      --dark-section: #171717;
+      --dark-border: #262626;
+      --text-light: #e5e7eb;
+      --text-muted: #9ca3af;
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Boutons */
+    .btn { transition: all 0.3s ease-in-out; font-weight: 600; border-radius: 0.4rem; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+    .btn-green { background-color: var(--luxmeca-red); color: #fff; }
+    .btn-green:hover { background-color: var(--luxmeca-red-dark); }
+    .btn-outline-green { border: 2px solid var(--dirickx-green); color: var(--dirickx-green); background: transparent; }
+    .btn-outline-green:hover { background-color: var(--luxmeca-red); color: #fff; border-color: var(--luxmeca-red); }
 
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* Header */
+    header { background-color: #0b0b0b; border-bottom: 1px solid var(--dark-border); }
 
-    .header-anim {
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: headerDrop 0.8s ease-out forwards;
-      animation-delay: 0.3s;
-    }
+    /* Sections */
+    section { background-color: var(--dark-section); border-radius: 1rem; padding: 3rem 2rem; border: 1px solid var(--dark-border); }
 
-    @keyframes headerDrop {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .section-title { margin-bottom: 1.5rem; color: var(--luxmeca-red); }
 
-    .logo-anim {
-      opacity: 0;
-      transform: translateY(-15px);
-      animation: logoEntry 1s ease-out forwards;
-      animation-delay: 0.6s;
-      transition: transform 0.4s ease;
-    }
+    /* Catalogue */
+    .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; margin-top: 1rem; border: 1px solid var(--dark-border); }
+    .catalogue-container img { transition: transform 0.7s ease; }
+    .catalogue-container:hover img { transform: scale(1.05); }
+    .catalogue-overlay { position: absolute; bottom: 0; right: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; padding: 1.5rem 2rem; font-weight: 500; font-size: 1.1rem; display: flex; justify-content: flex-end; gap: 0.5rem; }
 
-    .logo-anim:hover {
-      transform: scale(1.08) rotate(-2deg);
-    }
+    /* Contact */
+    #contact { background-color: var(--dark-section); }
+    #contact input, #contact textarea { background-color: var(--dark-bg); border: 1px solid var(--dark-border); color: var(--text-light); border-radius: 0.4rem; }
+    #contact input:focus, #contact textarea:focus { outline: none; border-color: var(--luxmeca-red); box-shadow: 0 0 0 1px var(--luxmeca-red); }
 
-    @keyframes logoEntry {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .contact-info p { margin-bottom: 0.75rem; }
+    .contact-info a { color: var(--luxmeca-red); text-decoration: none; }
+    .contact-info a:hover { text-decoration: underline; }
 
-    /* =====================
-       HEADER
-    ===================== */
-    header {
-      background-color: #ffffff;
-      border-bottom: 3px solid var(--luxmeca-red);
-    }
-
-    /* =====================
-       BOUTONS
-    ===================== */
-    .btn {
-      transition: all 0.3s ease-in-out;
-      font-weight: 600;
-      border-radius: 0.4rem;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    }
-
-    .btn-green {
-      background-color: var(--dirickx-green);
-      color: #ffffff;
-    }
-
-    .btn-green:hover {
-      background-color: var(--dirickx-green-dark);
-    }
-
-    .btn-outline-green {
-      border: 2px solid var(--dirickx-green);
-      color: var(--dirickx-green);
-      background: transparent;
-    }
-
-    .btn-outline-green:hover {
-      background-color: var(--luxmeca-red);
-      border-color: var(--luxmeca-red);
-      color: #ffffff;
-    }
-
-    /* =====================
-       SECTIONS
-    ===================== */
-    section {
-      background-color: #ffffff;
-      border-radius: 1rem;
-      padding: 3rem 2rem;
-    }
-
-    .section-title {
-      margin-bottom: 1.5rem;
-      border-left: 6px solid var(--luxmeca-red);
-      padding-left: 1rem;
-    }
-
-    /* =====================
-       CATALOGUE
-    ===================== */
-    .catalogue-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1rem;
-      margin-top: 1rem;
-    }
-
-    .catalogue-container img {
-      transition: transform 0.7s ease;
-    }
-
-    .catalogue-container:hover img {
-      transform: scale(1.05);
-    }
-
-    .catalogue-overlay {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      background: linear-gradient(transparent, rgba(0,0,0,0.6));
-      color: white;
-      padding: 1.5rem 2rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.5rem;
-    }
-
-    /* =====================
-       CONTACT
-    ===================== */
-    #contact {
-      background-color: var(--gray-bg);
-    }
-
-    #contact input,
-    #contact textarea {
-      border: 1px solid var(--gray-border);
-      border-radius: 0.4rem;
-    }
-
-    #contact input:focus,
-    #contact textarea:focus {
-      outline: none;
-      border-color: var(--luxmeca-red);
-    }
-
-    /* =====================
-       FOOTER
-    ===================== */
-    footer {
-      background-color: #111;
-      color: #d1d5db;
-      padding: 2rem;
-      border-top: 4px solid var(--luxmeca-red);
-    }
-
-    .contact-info p {
-      margin-bottom: 0.75rem;
-    }
+    /* Footer */
+    footer { background-color: #0b0b0b; color: var(--text-muted); padding: 2rem; border-top: 4px solid var(--luxmeca-red); text-align: center; }
   </style>
 </head>
 
@@ -212,12 +92,12 @@
       <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
       <div>
         <p class="text-lg font-semibold" style="color: var(--dirickx-green);">Stéphane Winckel</p>
-        <p class="text-sm text-gray-500">Chargé d'affaires · DIRICKX — Luxembourg</p>
+        <p class="text-sm text-gray-400">Chargé d'affaires · DIRICKX — Luxembourg</p>
       </div>
     </div>
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stephane.winckel@luxmeca.lu&body=Bonjour%20Stéphane,"
        target="_blank"
-       class="btn btn-green px-4 py-2 rounded-md text-sm">
+       class="btn btn-green px-4 py-2 rounded-md text-sm font-medium">
       Envoyer un mail
     </a>
   </div>
@@ -225,31 +105,21 @@
 
 <main class="w-full px-6 py-16 space-y-20">
 
-  <!-- HERO -->
+  <!-- HERO / Section principale -->
   <section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
     <div>
-      <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--dirickx-green);">
-        Votre interlocuteur DIRICKX sur la grande région
-      </h1>
-      <p class="text-gray-700 mb-6 leading-relaxed">
-        Je représente DIRICKX sur toute la grande région. J'accompagne collectivités,
-        entreprises et particuliers dans leurs projets de clôture, contrôle d'accès
-        et protection périmétrique.
-      </p>
-      <ul class="space-y-3 text-gray-700">
+      <h1 class="text-4xl font-bold mb-6 section-title" style="color: var(--dirickx-green);">Votre interlocuteur DIRICKX sur la grande région</h1>
+      <p class="text-gray-300 mb-6 leading-relaxed">Je représente DIRICKX sur toute la grande région. J'accompagne collectivités, entreprises et particuliers dans leurs projets de clôture, contrôle d'accès et protection périmétrique.</p>
+      <ul class="space-y-3 text-gray-300">
         <li>🔹 Diagnostics & conseils sur-mesure</li>
         <li>🔹 Solutions complètes : clôtures, portails, motorisations, systèmes anti-intrusion</li>
         <li>🔹 Suivi de projet</li>
       </ul>
       <div class="mt-10 flex flex-wrap gap-5">
         <a href="#contact" class="btn btn-green px-6 py-3 rounded-md">Me contacter</a>
-        <a href="https://www.dirickx.fr/" target="_blank"
-           class="btn btn-outline-green px-6 py-3 rounded-md text-sm font-medium">
-          Découvrir DIRICKX
-        </a>
+        <a href="https://www.dirickx.fr/" target="_blank" class="btn btn-outline-green px-6 py-3 rounded-md text-sm font-medium">Découvrir DIRICKX</a>
       </div>
     </div>
-
     <div class="catalogue-container fade-in w-full">
       <a href="https://www.dirickx.fr/catalogue/1-DIRICKX-Catalogue-2025.html#/page/0" target="_blank">
         <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" />
@@ -262,46 +132,41 @@
   <section id="zone" class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
     <div>
       <h3 class="text-2xl font-semibold mb-4 section-title" style="color: var(--dirickx-green);">Localisation</h3>
-      <p class="text-gray-700 mb-5">
-        <strong>Lux-Méca SA</strong> basé à <strong>Ehlerange</strong>, au cœur de la grande région.
-      </p>
-      <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
+      <p class="text-gray-300 mb-5"><strong>Lux-Méca SA</strong> basé à <strong>Ehlerange</strong>, <u>au cœur de la grande région</u>.</p>
+      <p class="text-sm text-gray-400">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
     </div>
-
     <div class="rounded-xl overflow-hidden shadow-lg w-full">
-      <iframe class="w-full h-64"
-        src="https://www.google.com/maps?q=Lux+Méca+s.a.,+Ehlerange&output=embed"
-        style="border:0;" loading="lazy"></iframe>
+      <iframe title="Lux-Méca SA – localisation régionale" class="w-full h-64" src="https://www.google.com/maps?q=Lux+M%C3%A9ca+s.a.,+15-17+ZARE+Il%C3%B4t+Est,+L-4385+Ehlerange,+Luxembourg&z=10&t=k&output=embed" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="p-8 shadow-sm fade-in w-full px-6">
-    <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--dirickx-green);">
-      Contact
-    </h3>
-
+    <h3 class="text-2xl font-semibold mb-8 text-center section-title" style="color: var(--dirickx-green);">Contact</h3>
     <div class="grid md:grid-cols-2 gap-12 w-full">
       <div class="contact-info">
-        <p class="text-lg font-medium">Stéphane Winckel</p>
-        <p class="text-gray-500">Chargé d'affaires - DIRICKX Luxembourg / LuxMéca SA</p>
-        <p>📞 <a href="tel:+352661686855" style="color: var(--luxmeca-red);">+352 661 686 855</a></p>
-        <p>✉️ <span style="color: var(--luxmeca-red);">stephane.winckel@luxmeca.lu</span></p>
-        <p>🌐 <a href="https://www.luxmeca.com/" target="_blank" style="color: var(--luxmeca-red);">LuxMéca</a></p>
+        <p class="text-gray-100 text-lg font-medium">Stéphane Winckel</p>
+        <p class="text-gray-400 mb-5">Chargé d'affaires - DIRICKX Luxembourg / LuxMéca SA</p>
+        <p class="mt-2 text-sm">📞 <a href="tel:+352661686855">+352 661 686 855</a></p>
+        <p class="mt-1 text-sm">✉️ <span>stephane.winckel@luxmeca.lu</span></p>
+        <p class="mt-1 text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank">Dirickx</a></p>
+        <p class="mt-1 text-sm">🌐 <a href="https://www.luxmeca.com/" target="_blank">LuxMéca</a></p>
+        <p class="mt-1 text-sm">🔗 <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank">Linkedin</a></p>
+        <p class="mt-4 text-sm text-gray-400">🕓 Lun–Ven 8:00–15:00</p>
+        <p class="mt-2 text-sm text-gray-400">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
       </div>
-
       <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-5 w-full">
-        <input required placeholder="Nom" class="w-full px-3 py-2 border" />
-        <input required type="email" placeholder="Email" class="w-full px-3 py-2 border" />
-        <textarea rows="5" placeholder="Message" class="w-full px-3 py-2 border"></textarea>
-        <button type="submit" class="btn btn-green px-5 py-3 w-full">Envoyer</button>
+        <div><label class="block text-sm font-medium">Nom</label><input name="name" required class="mt-1 block w-full px-3 py-2" /></div>
+        <div><label class="block text-sm font-medium">Email</label><input name="email" type="email" required class="mt-1 block w-full px-3 py-2" /></div>
+        <div><label class="block text-sm font-medium">Téléphone</label><input name="phone" class="mt-1 block w-full px-3 py-2" /></div>
+        <div><label class="block text-sm font-medium">Message</label><textarea name="message" rows="5" required class="mt-1 block w-full px-3 py-2"></textarea></div>
+        <button type="submit" class="btn btn-green px-5 py-3 rounded-md w-full">Envoyer</button>
       </form>
     </div>
   </section>
 
   <footer class="text-center text-sm fade-in pt-10 w-full">
-    © <script>document.write(new Date().getFullYear())</script>
-    DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · LuxMéca SA
+    © <script>document.write(new Date().getFullYear())</script> DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · LuxMéca SA
   </footer>
 
 </main>
