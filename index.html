@@ -11,17 +11,23 @@
   <script src="//code.tidio.co/mni8r03mp2mzr2tbuxz5csmxfimyp4zd.js" async></script>
 
   <style>
+    :root { --main-red: #b30000; }
+
     body {
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
       background:
-        linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* moins opaque pour voir la photo */
         url("./luxmeca_cover.jpeg") no-repeat center center fixed;
       background-size: cover;
-      color: #b30000; /* texte principal rouge moins flashy */
+      color: #fff; /* texte normal en blanc */
     }
 
     a { transition: all 0.3s ease-in-out; }
+
+    h1, h2, h3, .section-title {
+      color: var(--main-red); /* titres en rouge */
+    }
 
     .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease-out forwards; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -36,8 +42,6 @@
 
     .btn { transition: all 0.3s ease-in-out; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-
-    :root { --main-red: #b30000; }
 
     .btn-green { background-color: var(--main-red); color: #fff; }
     .btn-green:hover { background-color: #990000; }
@@ -58,22 +62,22 @@
     }
 
     section {
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.6); /* légèrement transparent pour voir le fond */
       border-radius: 1rem;
       padding: 3rem 2rem;
       backdrop-filter: blur(4px);
     }
 
     footer {
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.8);
       padding: 2rem;
-      color: #b30000; /* footer rouge moins flashy */
+      color: #fff; /* texte footer blanc */
     }
 
     .text-gray-700,
     .text-gray-500,
     .text-gray-400 {
-      color: #cc4d4d !important; /* gris clair remplacé par rouge doux */
+      color: #fff !important; /* texte secondaire en blanc */
     }
 
     .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; margin-top: 1rem; }
@@ -85,7 +89,7 @@
       bottom: 0;
       right: 0;
       width: 100%;
-      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
       color: var(--main-red);
       padding: 1.5rem 2rem;
       font-weight: 500;
@@ -100,7 +104,7 @@
     .contact-info p { margin-bottom: 0.75rem; }
 
     input, textarea {
-      background: #000; /* formulaire en noir pour lisibilité */
+      background: #000; /* formulaire en noir */
       color: #fff; /* texte en blanc */
     }
   </style>
