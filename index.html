@@ -18,7 +18,7 @@
         linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
         url("./luxmeca_cover.jpeg") no-repeat center center fixed;
       background-size: cover;
-      color: #ffffff;
+      color: #e60000; /* texte principal en rouge */
     }
 
     a { transition: all 0.3s ease-in-out; }
@@ -37,19 +37,19 @@
     .btn { transition: all 0.3s ease-in-out; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
 
-    :root { --logo-green: #ffffff; }
+    :root { --main-red: #e60000; }
 
-    .btn-green { background-color: #ffffff; color: #000; }
-    .btn-green:hover { background-color: #e5e5e5; }
+    .btn-green { background-color: var(--main-red); color: #fff; }
+    .btn-green:hover { background-color: #cc0000; }
 
     .btn-outline-green {
-      border: 2px solid #ffffff;
-      color: #ffffff;
+      border: 2px solid var(--main-red);
+      color: var(--main-red);
       background: transparent;
     }
     .btn-outline-green:hover {
-      background-color: #ffffff;
-      color: #000;
+      background-color: var(--main-red);
+      color: #fff;
     }
 
     header {
@@ -67,13 +67,13 @@
     footer {
       background: rgba(0,0,0,0.9);
       padding: 2rem;
-      color: #ccc;
+      color: #e60000; /* footer rouge */
     }
 
     .text-gray-700,
     .text-gray-500,
     .text-gray-400 {
-      color: #e5e7eb !important;
+      color: #ff6666 !important; /* gris clair remplacé par rouge clair */
     }
 
     .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; margin-top: 1rem; }
@@ -86,7 +86,7 @@
       right: 0;
       width: 100%;
       background: linear-gradient(transparent, rgba(0,0,0,0.9));
-      color: white;
+      color: var(--main-red);
       padding: 1.5rem 2rem;
       font-weight: 500;
       font-size: 1.1rem;
@@ -100,8 +100,8 @@
     .contact-info p { margin-bottom: 0.75rem; }
 
     input, textarea {
-      background: rgba(255,255,255,0.95);
-      color: #111;
+      background: rgba(230,0,0,0.95); /* blanc remplacé par rouge semi-transparent */
+      color: #fff;
     }
   </style>
 </head>
