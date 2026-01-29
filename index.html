@@ -18,7 +18,7 @@
         linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
         url("./luxmeca_cover.jpeg") no-repeat center center fixed;
       background-size: cover;
-      color: #e60000; /* texte principal en rouge */
+      color: #b30000; /* texte principal rouge moins flashy */
     }
 
     a { transition: all 0.3s ease-in-out; }
@@ -37,10 +37,10 @@
     .btn { transition: all 0.3s ease-in-out; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
 
-    :root { --main-red: #e60000; }
+    :root { --main-red: #b30000; }
 
     .btn-green { background-color: var(--main-red); color: #fff; }
-    .btn-green:hover { background-color: #cc0000; }
+    .btn-green:hover { background-color: #990000; }
 
     .btn-outline-green {
       border: 2px solid var(--main-red);
@@ -67,13 +67,13 @@
     footer {
       background: rgba(0,0,0,0.9);
       padding: 2rem;
-      color: #e60000; /* footer rouge */
+      color: #b30000; /* footer rouge moins flashy */
     }
 
     .text-gray-700,
     .text-gray-500,
     .text-gray-400 {
-      color: #ff6666 !important; /* gris clair remplacé par rouge clair */
+      color: #cc4d4d !important; /* gris clair remplacé par rouge doux */
     }
 
     .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; margin-top: 1rem; }
@@ -100,8 +100,8 @@
     .contact-info p { margin-bottom: 0.75rem; }
 
     input, textarea {
-      background: rgba(230,0,0,0.95); /* blanc remplacé par rouge semi-transparent */
-      color: #fff;
+      background: #000; /* formulaire en noir pour lisibilité */
+      color: #fff; /* texte en blanc */
     }
   </style>
 </head>
