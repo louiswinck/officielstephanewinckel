@@ -192,12 +192,40 @@
       <p class="text-sm">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
     </div>
 
-    <form class="space-y-5 w-full">
-      <input placeholder="Nom" class="w-full rounded-md px-3 py-2">
-      <input placeholder="Email" class="w-full rounded-md px-3 py-2">
-      <textarea placeholder="Message" rows="5" class="w-full rounded-md px-3 py-2"></textarea>
-      <button class="btn btn-green px-5 py-3 rounded-md w-full">Envoyer</button>
-    </form>
+    <form action="https://formspree.io/f/mzdkardl" method="POST" class="space-y-5 w-full">
+  
+  <input 
+    type="text"
+    name="name"
+    placeholder="Nom" 
+    required
+    class="w-full rounded-md px-3 py-2"
+  >
+
+  <input 
+    type="email"
+    name="email"
+    placeholder="Email" 
+    required
+    class="w-full rounded-md px-3 py-2"
+  >
+
+  <textarea 
+    name="message"
+    placeholder="Message" 
+    rows="5" 
+    required
+    class="w-full rounded-md px-3 py-2"
+  ></textarea>
+
+  <button 
+    type="submit"
+    class="btn btn-green px-5 py-3 rounded-md w-full"
+  >
+    Envoyer
+  </button>
+
+</form>
 
   </div>
 </section>
