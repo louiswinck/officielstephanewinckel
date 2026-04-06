@@ -139,14 +139,19 @@
     .hero-content {
       flex: 1;
       display: flex;
-      align-items: center;
+      align-items: stretch;
+      gap: 3rem;
       padding: 6rem 2rem 4rem;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
     }
 
-    .hero-text { max-width: 620px; }
+    .hero-text { flex: 1; min-width: 0; }
+
+    @media (max-width: 768px) {
+      .hero-content { flex-direction: column; align-items: stretch; }
+    }
 
     .hero-tag {
       display: inline-block;
@@ -704,7 +709,7 @@
       <p class="header-role">Chargé d'affaires · DIRICKX Luxembourg</p>
     </div>
   </div>
-  <a href="mailto:stephane.winckel@luxmeca.lu?subject=Demande%20de%20contact&body=Bonjour%20Stéphane," class="btn-mail">
+  <a href="/cdn-cgi/l/email-protection#d4a7a0b1a4bcb5bab1faa3bdbab7bfb1b894b8a1acb9b1b7b5fab8a1eba7a1b6beb1b7a0e990b1b9b5bab0b1f1e6e4b0b1f1e6e4b7bbbaa0b5b7a0f2b6bbb0ade996bbbabebba1a6f1e6e487a0177da4bcb5bab1f8" class="btn-mail">
     ✉ Envoyer un mail
   </a>
 </header>
@@ -728,12 +733,9 @@
         <a href="https://www.dirickx.fr/" target="_blank" rel="noopener" class="btn-secondary">Découvrir DIRICKX →</a>
       </div>
     </div>
-  </div>
 
-  <!-- Catalogue card at bottom of hero -->
-  <div class="catalogue-strip">
-    <a href="https://www.dirickx.fr/catalogue/index.html#/page/0" target="_blank" rel="noopener" class="catalogue-card">
-      <img src="./hero-project.jpg" alt="Projet Dirickx" />
+    <a href="https://www.dirickx.fr/catalogue/index.html#/page/0" target="_blank" rel="noopener" class="catalogue-card" style="flex:1; min-width:280px;">
+      <img src="./hero-project.jpg" alt="Projet Dirickx" style="width:100%; height:100%; min-height:320px; object-fit:cover; border-radius:8px;" />
       <div class="catalogue-card-overlay">
         <div>
           📘 Catalogue DIRICKX
@@ -821,9 +823,9 @@
             <span class="icon">📞</span>
             +352 661 686 855
           </a>
-          <a href="mailto:stephane.winckel@luxmeca.lu" class="contact-line">
+          <a href="/cdn-cgi/l/email-protection#dfacabbaafb7beb1baf1a8b6b1bcb4bab39fb3aaa7b2babcbef1b3aa" class="contact-line">
             <span class="icon">✉️</span>
-            stephane.winckel@luxmeca.lu
+            <span class="__cf_email__" data-cfemail="6f1c1b0a1f070e010a411806010c040a032f031a17020a0c0e41031a">[email&#160;protected]</span>
           </a>
           <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank" rel="noopener" class="contact-line">
             <span class="icon">🔗</span>
@@ -877,7 +879,7 @@
   © <span id="year"></span> DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · Luxmeca SA
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -911,22 +913,4 @@
       const res = await fetch('https://formspree.io/f/mzdkardl', {
         method: 'POST',
         body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        form.style.display = 'none';
-        formSuccess.style.display = 'block';
-      } else {
-        throw new Error('Server error');
-      }
-    } catch (err) {
-      formError.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer le message';
-    }
-  });
-</script>
-
-</body>
-</html>
+        headers: { 'Accept': 'application/json'
