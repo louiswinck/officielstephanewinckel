@@ -28,13 +28,18 @@
 
     a { transition: all 0.3s ease-in-out; }
 
-    h1, h2, h3, .section-title {
-      color: var(--main-red);
-    }
+    h1, h2, h3, .section-title { color: var(--main-red); }
 
-    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s ease-out forwards; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    /* Fade-in — déclenché dès le chargement pour les éléments visibles */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .header-anim { opacity: 0; transform: translateY(-20px); animation: headerDrop 0.8s ease-out forwards; animation-delay: 0.3s; }
     @keyframes headerDrop { to { opacity: 1; transform: translateY(0); } }
@@ -79,9 +84,7 @@
 
     .text-gray-700,
     .text-gray-500,
-    .text-gray-400 {
-      color: #fff !important;
-    }
+    .text-gray-400 { color: #fff !important; }
 
     .catalogue-container { position: relative; overflow: hidden; border-radius: 1rem; margin-top: 1rem; }
     .catalogue-container img { transition: transform 0.7s ease; }
@@ -89,8 +92,7 @@
 
     .catalogue-overlay {
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 0; right: 0;
       width: 100%;
       background: linear-gradient(transparent, rgba(0,0,0,0.8));
       color: var(--main-red);
@@ -109,6 +111,75 @@
     input, textarea {
       background: #000;
       color: #fff;
+      border: 1px solid #444;
+      border-radius: 0.375rem;
+      padding: 0.5rem 0.75rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    input:focus, textarea:focus { border-color: var(--main-red); }
+
+    /* Pourquoi DIRICKX */
+    .atouts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .atout-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(179,0,0,0.3);
+      border-radius: 1rem;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .atout-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(179,0,0,0.2);
+    }
+
+    .atout-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .atout-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--main-red);
+      margin-bottom: 0.5rem;
+    }
+
+    .atout-desc {
+      font-size: 0.88rem;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .atout-badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      background: rgba(179,0,0,0.15);
+      border: 1px solid var(--main-red);
+      color: var(--main-red);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* Formulaire feedback */
+    #form-success {
+      display: none;
+      background: rgba(0,120,0,0.2);
+      border: 1px solid #0a0;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      color: #6f6;
     }
   </style>
 </head>
@@ -118,13 +189,13 @@
 <header class="sticky top-0 z-50 w-full shadow-sm">
   <div class="px-6 py-6 flex items-center justify-between header-anim w-full flex-nowrap">
     <div class="flex items-center gap-4">
-     <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
+      <img src="./logo-dirickx.png" alt="Logo Dirickx" class="h-12 w-auto logo-anim" />
       <div>
         <p class="text-lg font-semibold">Stéphane Winckel</p>
         <p class="text-sm text-gray-500">Chargé d'affaires · DIRICKX — Luxembourg</p>
       </div>
     </div>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stephane.winckel@luxmeca.lu&body=Bonjour%20Stéphane," target="_blank" class="btn btn-green px-4 py-2 rounded-md text-sm font-medium">
+    <a href="mailto:stephane.winckel@luxmeca.lu" class="btn btn-green px-4 py-2 rounded-md text-sm font-medium">
       Envoyer un mail
     </a>
   </div>
@@ -132,118 +203,206 @@
 
 <main class="w-full px-6 py-16 space-y-20">
 
-<section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
-  <div>
-    <h1 class="text-4xl font-bold mb-6 section-title">Votre interlocuteur DIRICKX sur la grande région</h1>
-    <p class="text-gray-700 mb-6 leading-relaxed">
-      Je représente DIRICKX sur toute la grande région. J'accompagne collectivités, entreprises et particuliers dans leurs projets de clôture, contrôle d'accès et protection périmétrique.
-    </p>
-    <ul class="space-y-3 text-gray-700">
-      <li>🔹 Diagnostics & conseils sur-mesure</li>
-      <li>🔹 Solutions complètes : clôtures, portails, motorisations, systèmes anti-intrusion</li>
-      <li>🔹 Suivi de projet</li>
-    </ul>
-    <div class="mt-10 flex flex-wrap gap-5">
-      <a href="#contact" class="btn btn-green px-6 py-3 rounded-md">Me contacter</a>
-      <a href="https://www.dirickx.fr/" target="_blank" class="btn btn-outline-green px-6 py-3 rounded-md text-sm font-medium">Découvrir DIRICKX</a>
-    </div>
-  </div>
-
-  <div class="catalogue-container fade-in w-full">
-    <a href="https://www.dirickx.fr/catalogue/index.html#/page/0" target="_blank" class="block relative">
-      <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" />
-      <div class="catalogue-overlay">📘 <span>Catalogue DIRICKX</span></div>
-    </a>
-  </div>
-</section>
-
-<section id="zone" class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
-  <div>
-    <h3 class="text-2xl font-semibold mb-4 section-title">Localisation</h3>
-    <p class="text-gray-700 mb-5">
-      <strong>Lux-Méca SA</strong> basé à <strong>Ehlerange</strong>, au coeur de la grande région.
-    </p>
-    <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
-  </div>
-
-  <div class="rounded-xl overflow-hidden shadow-lg w-full">
-    <iframe
-      class="w-full h-64"
-      src="https://www.google.com/maps?q=Lux+Méca+s.a.,+15-17+ZARE+Ilôt+Est,+L-4385+Ehlerange,+Luxembourg&z=10&t=k&output=embed"
-      style="border:0;"
-      loading="lazy">
-    </iframe>
-  </div>
-</section>
-
-<section id="contact" class="fade-in w-full px-6">
-  <h3 class="text-2xl font-semibold mb-8 text-center section-title">Contact</h3>
-  <div class="grid md:grid-cols-2 gap-12 w-full">
-
-    <div class="contact-info">
-      <p class="text-lg font-medium">Stéphane Winckel</p>
-      <p class="text-gray-500 mb-5">Chargé d'affaires - DIRICKX Luxembourg / Luxmeca SA</p>
-      <p class="text-sm">📞 +352 661 686 855</p>
-      <p class="text-sm">✉️ stephane.winckel@luxmeca.lu</p>
-      <p class="text-sm">🔗 <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank" class="underline text-white">Linkedin</a></p>
-      <p class="text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" class="underline text-white">Dirickx</a></p>
-      <p class="text-sm">🌐 <a href="https://www.luxmeca.com/" target="_blank" class="underline text-white">LuxMéca</a></p>
-      <p class="mt-4 text-sm text-gray-500">🕓 Lun–Ven 8:00–15:00</p>
-      <p class="text-sm">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
+  <!-- HERO -->
+  <section class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
+    <div>
+      <h1 class="text-4xl font-bold mb-6 section-title">Votre interlocuteur DIRICKX sur la grande région</h1>
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        Je représente DIRICKX sur toute la grande région. J'accompagne collectivités, entreprises et particuliers dans leurs projets de clôture, contrôle d'accès et protection périmétrique.
+      </p>
+      <ul class="space-y-3 text-gray-700">
+        <li>🔹 Diagnostics & conseils sur-mesure</li>
+        <li>🔹 Solutions complètes : clôtures, portails, motorisations, systèmes anti-intrusion</li>
+        <li>🔹 Suivi de projet</li>
+      </ul>
+      <div class="mt-10 flex flex-wrap gap-5">
+        <a href="#contact" class="btn btn-green px-6 py-3 rounded-md">Me contacter</a>
+        <a href="https://www.dirickx.fr/" target="_blank" class="btn btn-outline-green px-6 py-3 rounded-md text-sm font-medium">Découvrir DIRICKX</a>
+      </div>
     </div>
 
-    <form action="https://formspree.io/f/mzdkardl" method="POST" class="space-y-5 w-full">
-  
-  <input 
-    type="text"
-    name="name"
-    placeholder="Nom" 
-    required
-    class="w-full rounded-md px-3 py-2"
-  >
+    <div class="catalogue-container fade-in w-full">
+      <a href="https://www.dirickx.fr/catalogue/index.html#/page/0" target="_blank" class="block relative">
+        <img src="./hero-project.jpg" alt="Projet Dirickx" class="w-full h-80 object-cover" />
+        <div class="catalogue-overlay">📘 <span>Catalogue DIRICKX</span></div>
+      </a>
+    </div>
+  </section>
 
-  <input 
-    type="email"
-    name="email"
-    placeholder="Email" 
-    required
-    class="w-full rounded-md px-3 py-2"
-  >
+  <!-- LOCALISATION -->
+  <section id="zone" class="grid md:grid-cols-2 gap-12 items-center fade-in w-full">
+    <div>
+      <h3 class="text-2xl font-semibold mb-4 section-title">Localisation</h3>
+      <p class="text-gray-700 mb-5">
+        <strong>Lux-Méca SA</strong> basé à <strong>Ehlerange</strong>, au cœur de la grande région.
+      </p>
+      <p class="text-sm text-gray-500">📍 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
+    </div>
+    <div class="rounded-xl overflow-hidden shadow-lg w-full">
+      <iframe
+        class="w-full h-64"
+        src="https://www.google.com/maps?q=Lux+Méca+s.a.,+15-17+ZARE+Ilôt+Est,+L-4385+Ehlerange,+Luxembourg&z=10&t=k&output=embed"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 
-  <textarea 
-    name="message"
-    placeholder="Message" 
-    rows="5" 
-    required
-    class="w-full rounded-md px-3 py-2"
-  ></textarea>
+  <!-- POURQUOI DIRICKX -->
+  <section id="pourquoi" class="fade-in w-full">
+    <h3 class="text-2xl font-semibold text-center section-title">Pourquoi choisir DIRICKX ?</h3>
+    <p class="text-center text-gray-500 mb-2">Le leader français de la protection périmétrique depuis près de 100 ans</p>
 
-  <button 
-    type="submit"
-    class="btn btn-green px-5 py-3 rounded-md w-full"
-  >
-    Envoyer
-  </button>
+    <div class="atouts-grid">
 
-</form>
+      <div class="atout-card">
+        <div class="atout-icon">🏭</div>
+        <p class="atout-title">Fabrication française</p>
+        <p class="atout-desc">Conception et production réalisées majoritairement en France, avec des matières premières certifiées (acier, aluminium).</p>
+        <span class="atout-badge">N°1 fabricant français</span>
+      </div>
 
-  </div>
-</section>
+      <div class="atout-card">
+        <div class="atout-icon">🛡️</div>
+        <p class="atout-title">Garantie 10 ans</p>
+        <p class="atout-desc">La grande majorité des produits DIRICKX bénéficie d'une garantie anti-corrosion de 10 ans, conforme à la norme ISO 12944.</p>
+        <span class="atout-badge">Anti-corrosion certifiée</span>
+      </div>
 
-<footer class="text-center text-sm fade-in pt-10 border-t border-gray-700 w-full">
-  © <script>document.write(new Date().getFullYear())</script> DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · Luxmeca SA
-</footer>
+      <div class="atout-card">
+        <div class="atout-icon">✅</div>
+        <p class="atout-title">Certification ISO 9001</p>
+        <p class="atout-desc">DIRICKX est certifié ISO 9001 (version 2015), gage d'une démarche d'amélioration continue et de qualité constante.</p>
+        <span class="atout-badge">Organisme indépendant</span>
+      </div>
+
+      <div class="atout-card">
+        <div class="atout-icon">🎯</div>
+        <p class="atout-title">Solutions sur-mesure</p>
+        <p class="atout-desc">Un bureau d'étude dédié analyse chaque projet et conçoit des solutions adaptées à vos contraintes de sécurité, d'esthétisme et de dimension.</p>
+        <span class="atout-badge">100% personnalisable</span>
+      </div>
+
+      <div class="atout-card">
+        <div class="atout-icon">🌍</div>
+        <p class="atout-title">Présence internationale</p>
+        <p class="atout-desc">Un réseau de partenaires installateurs certifiés en France et à l'international, dont Stéphane Winckel pour toute la grande région.</p>
+        <span class="atout-badge">Grande région couverte</span>
+      </div>
+
+      <div class="atout-card">
+        <div class="atout-icon">🏗️</div>
+        <p class="atout-title">Tous marchés</p>
+        <p class="atout-desc">Des solutions pour particuliers, collectivités, sites industriels, logistiques et sécuritaires. DIRICKX s'adapte à chaque environnement.</p>
+        <span class="atout-badge">Particuliers & Pro</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in w-full px-6">
+    <h3 class="text-2xl font-semibold mb-8 text-center section-title">Contact</h3>
+    <div class="grid md:grid-cols-2 gap-12 w-full">
+
+      <div class="contact-info">
+        <p class="text-lg font-medium">Stéphane Winckel</p>
+        <p class="text-gray-500 mb-5">Chargé d'affaires - DIRICKX Luxembourg / Luxmeca SA</p>
+        <p class="text-sm">📞 <a href="tel:+352661686855" class="hover:underline">+352 661 686 855</a></p>
+        <p class="text-sm">✉️ <a href="mailto:stephane.winckel@luxmeca.lu" class="hover:underline">stephane.winckel@luxmeca.lu</a></p>
+        <p class="text-sm">🔗 <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank" class="underline text-white">LinkedIn</a></p>
+        <p class="text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" class="underline text-white">Dirickx</a></p>
+        <p class="text-sm">🌐 <a href="https://www.luxmeca.com/" target="_blank" class="underline text-white">LuxMéca</a></p>
+        <p class="mt-4 text-sm text-gray-500">🕓 Lun–Ven 8:00–15:00</p>
+        <p class="text-sm">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
+      </div>
+
+      <!-- Formulaire AJAX (pas de rechargement de page) -->
+      <div class="space-y-5 w-full">
+        <div id="form-success">✅ Message envoyé ! Stéphane vous répondra rapidement.</div>
+
+        <input type="text" id="f-name" placeholder="Nom" required />
+        <input type="email" id="f-email" placeholder="Email" required />
+        <textarea id="f-message" placeholder="Message" rows="5" required></textarea>
+
+        <button id="f-submit" onclick="sendForm()" class="btn btn-green px-5 py-3 rounded-md w-full">
+          Envoyer
+        </button>
+      </div>
+
+    </div>
+  </section>
 
 </main>
 
+<footer class="text-center text-sm fade-in pt-10 border-t border-gray-700 w-full">
+  © <span id="year"></span> DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · Luxmeca SA
+</footer>
+
 <script>
-  const elements = document.querySelectorAll('.fade-in');
+  // Footer year (sans document.write)
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Fade-in avec déclenchement immédiat pour les éléments déjà visibles
+  const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
     });
-  }, { threshold: 0.1 });
-  elements.forEach(el => observer.observe(el));
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+  fadeEls.forEach(el => {
+    // Déclenche immédiatement si déjà dans le viewport
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
+
+  // Formulaire AJAX via Formspree (sans rechargement)
+  async function sendForm() {
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const message = document.getElementById('f-message').value.trim();
+    const btn = document.getElementById('f-submit');
+
+    if (!name || !email || !message) {
+      alert('Merci de remplir tous les champs.');
+      return;
+    }
+
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mzdkardl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if (res.ok) {
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('f-name').value = '';
+        document.getElementById('f-email').value = '';
+        document.getElementById('f-message').value = '';
+        btn.style.display = 'none';
+      } else {
+        alert('Une erreur est survenue. Veuillez réessayer ou contacter directement Stéphane.');
+        btn.textContent = 'Envoyer';
+        btn.disabled = false;
+      }
+    } catch {
+      alert('Erreur réseau. Veuillez réessayer.');
+      btn.textContent = 'Envoyer';
+      btn.disabled = false;
+    }
+  }
 </script>
 
 </body>
