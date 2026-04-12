@@ -316,35 +316,60 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="fade-in w-full px-6">
-    <h3 class="text-2xl font-semibold mb-8 text-center section-title">Contact</h3>
-    <div class="grid md:grid-cols-2 gap-12 w-full">
+  <section id="contact" class="fade-in w-full">
+    <h3 class="text-2xl font-semibold mb-2 text-center section-title">Contactez Stéphane</h3>
+    <p class="text-center text-gray-500 mb-10">Disponible du lundi au vendredi, 8h00 – 15h00</p>
 
-      <div class="contact-info">
-        <p class="text-lg font-medium">Stéphane Winckel</p>
-        <p class="text-gray-500 mb-5">Chargé d'affaires - DIRICKX Luxembourg / Luxmeca SA</p>
-        <p class="text-sm">📞 <a href="tel:+352661686855" class="hover:underline">+352 661 686 855</a></p>
-        <p class="text-sm">✉️ <a href="mailto:stephane.winckel@luxmeca.lu" class="hover:underline">stephane.winckel@luxmeca.lu</a></p>
-        <p class="text-sm">🔗 <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank" class="underline text-white">LinkedIn</a></p>
-        <p class="text-sm">🌐 <a href="https://www.dirickx.fr/" target="_blank" class="underline text-white">Dirickx</a></p>
-        <p class="text-sm">🌐 <a href="https://www.luxmeca.com/" target="_blank" class="underline text-white">LuxMéca</a></p>
-        <p class="mt-4 text-sm text-gray-500">🕓 Lun–Ven 8:00–15:00</p>
-        <p class="text-sm">🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
-      </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
 
-      <!-- Formulaire AJAX (pas de rechargement de page) -->
-      <div class="space-y-5 w-full">
-        <div id="form-success">✅ Message envoyé ! Stéphane vous répondra rapidement.</div>
+      <!-- Appeler -->
+      <a href="tel:+352661686855" class="atout-card flex flex-col items-center text-center no-underline">
+        <div class="atout-icon">📞</div>
+        <p class="atout-title">Appeler</p>
+        <p class="atout-desc">+352 661 686 855</p>
+        <span class="atout-badge">Réponse immédiate</span>
+      </a>
 
-        <input type="text" id="f-name" placeholder="Nom" required />
-        <input type="email" id="f-email" placeholder="Email" required />
-        <textarea id="f-message" placeholder="Message" rows="5" required></textarea>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/352661686855?text=Bonjour%20Stéphane%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20solutions%20DIRICKX." target="_blank" class="atout-card flex flex-col items-center text-center no-underline">
+        <div class="atout-icon">💬</div>
+        <p class="atout-title">WhatsApp</p>
+        <p class="atout-desc">Envoyez un message direct</p>
+        <span class="atout-badge">Rapide & pratique</span>
+      </a>
 
-        <button id="f-submit" onclick="sendForm()" class="btn btn-green px-5 py-3 rounded-md w-full">
-          Envoyer
+      <!-- Email -->
+      <div class="atout-card flex flex-col items-center text-center relative" id="contact-mail-wrapper">
+        <div class="atout-icon">✉️</div>
+        <p class="atout-title">Email</p>
+        <p class="atout-desc">stephane.winckel@luxmeca.lu</p>
+        <button onclick="toggleContactMail()" class="atout-badge mt-3 cursor-pointer" style="background:var(--main-red);color:#fff;border:none;">
+          Écrire un mail ▾
         </button>
+        <div id="contact-mail-menu" class="hidden absolute bottom-16 left-0 right-0 mx-auto w-52 rounded-lg shadow-lg overflow-hidden z-50" style="background:rgba(20,20,20,0.97); border:1px solid rgba(179,0,0,0.4);">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stephane.winckel@luxmeca.lu&su=Demande%20d%27information%20DIRICKX&body=Bonjour%20Stéphane%2C%0A%0A" target="_blank"
+             class="flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-red-900 transition-colors">
+            <img src="https://www.google.com/favicon.ico" class="w-4 h-4"> Gmail
+          </a>
+          <a href="https://outlook.live.com/mail/0/deeplink/compose?to=stephane.winckel@luxmeca.lu&subject=Demande%20d%27information%20DIRICKX" target="_blank"
+             class="flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-red-900 transition-colors">
+            <img src="https://outlook.live.com/favicon.ico" class="w-4 h-4"> Outlook
+          </a>
+          <button onclick="copyEmail2()" class="w-full flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-red-900 transition-colors">
+            <span>📋</span> <span id="copy-label-2">Copier l'adresse</span>
+          </button>
+        </div>
       </div>
 
+    </div>
+
+    <!-- Infos secondaires -->
+    <div class="text-center space-y-2 text-sm text-gray-500">
+      <p>🔗 <a href="https://www.linkedin.com/in/stephane-winckel-a00b32267/" target="_blank" class="underline text-white">LinkedIn</a>
+         &nbsp;·&nbsp; 🌐 <a href="https://www.dirickx.fr/" target="_blank" class="underline text-white">Dirickx.fr</a>
+         &nbsp;·&nbsp; 🌐 <a href="https://www.luxmeca.com/" target="_blank" class="underline text-white">LuxMéca.com</a>
+      </p>
+      <p>🏢 Lux-Méca SA, 15-17 ZARE Ilôt Est, L-4385 Ehlerange, Luxembourg</p>
     </div>
   </section>
 
@@ -401,45 +426,25 @@
     }
   });
 
-  // Formulaire AJAX via Formspree (sans rechargement)
-  async function sendForm() {
-    const name = document.getElementById('f-name').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    const message = document.getElementById('f-message').value.trim();
-    const btn = document.getElementById('f-submit');
-
-    if (!name || !email || !message) {
-      alert('Merci de remplir tous les champs.');
-      return;
-    }
-
-    btn.textContent = 'Envoi en cours…';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch('https://formspree.io/f/mzdkardl', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      });
-
-      if (res.ok) {
-        document.getElementById('form-success').style.display = 'block';
-        document.getElementById('f-name').value = '';
-        document.getElementById('f-email').value = '';
-        document.getElementById('f-message').value = '';
-        btn.style.display = 'none';
-      } else {
-        alert('Une erreur est survenue. Veuillez réessayer ou contacter directement Stéphane.');
-        btn.textContent = 'Envoyer';
-        btn.disabled = false;
-      }
-    } catch {
-      alert('Erreur réseau. Veuillez réessayer.');
-      btn.textContent = 'Envoyer';
-      btn.disabled = false;
-    }
+  function toggleContactMail() {
+    const menu = document.getElementById('contact-mail-menu');
+    menu.classList.toggle('hidden');
   }
+
+  function copyEmail2() {
+    navigator.clipboard.writeText('stephane.winckel@luxmeca.lu').then(() => {
+      const label = document.getElementById('copy-label-2');
+      label.textContent = '✅ Copié !';
+      setTimeout(() => { label.textContent = "Copier l'adresse"; }, 2000);
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const w = document.getElementById('contact-mail-wrapper');
+    if (w && !w.contains(e.target)) {
+      document.getElementById('contact-mail-menu')?.classList.add('hidden');
+    }
+  });
 </script>
 
 </body>
