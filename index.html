@@ -193,6 +193,7 @@
       <div>
         <p class="text-lg font-semibold">Stéphane Winckel</p>
         <p class="text-sm text-gray-500">Chargé d'affaires · DIRICKX — Luxembourg</p>
+        <span id="status-badge" class="text-xs font-semibold px-2 py-0.5 rounded-full mt-1 inline-block"></span>
       </div>
     </div>
     <div class="relative" id="mail-dropdown-wrapper">
@@ -380,8 +381,29 @@
 </footer>
 
 <script>
-  // Menu mail
-  function toggleMailMenu() {
+  // Badge disponibilité
+  function updateStatus() {
+    const badge = document.getElementById('status-badge');
+    const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Luxembourg' }));
+    const day = now.getDay(); // 0=dim, 6=sam
+    const hour = now.getHours();
+    const isWeekday = day >= 1 && day <= 5;
+    const isWorkHour = hour >= 8 && hour < 15;
+
+    if (isWeekday && isWorkHour) {
+      badge.textContent = '🟢 Disponible maintenant';
+      badge.style.background = 'rgba(0,160,0,0.2)';
+      badge.style.color = '#4ade80';
+      badge.style.border = '1px solid #4ade80';
+    } else {
+      badge.textContent = '🔴 Hors bureau — laissez un message';
+      badge.style.background = 'rgba(179,0,0,0.2)';
+      badge.style.color = '#f87171';
+      badge.style.border = '1px solid #f87171';
+    }
+  }
+  updateStatus();
+  setInterval(updateStatus, 60000);
     const menu = document.getElementById('mail-menu');
     const arrow = document.getElementById('mail-arrow');
     menu.classList.toggle('hidden');
