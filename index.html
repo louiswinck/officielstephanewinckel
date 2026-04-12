@@ -381,15 +381,17 @@
 </footer>
 
 <script>
-  // Badge disponibilité
+  // ── Footer année ──
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Badge disponibilité ──
   function updateStatus() {
     const badge = document.getElementById('status-badge');
     const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Luxembourg' }));
-    const day = now.getDay(); // 0=dim, 6=sam
+    const day = now.getDay();
     const hour = now.getHours();
     const isWeekday = day >= 1 && day <= 5;
     const isWorkHour = hour >= 8 && hour < 15;
-
     if (isWeekday && isWorkHour) {
       badge.textContent = '🟢 Disponible maintenant';
       badge.style.background = 'rgba(0,160,0,0.2)';
@@ -404,6 +406,9 @@
   }
   updateStatus();
   setInterval(updateStatus, 60000);
+
+  // ── Menu mail header ──
+  function toggleMailMenu() {
     const menu = document.getElementById('mail-menu');
     const arrow = document.getElementById('mail-arrow');
     menu.classList.toggle('hidden');
@@ -418,16 +423,33 @@
     });
   }
 
-  // Fermer le menu si on clique ailleurs
+  // ── Menu mail contact ──
+  function toggleContactMail() {
+    document.getElementById('contact-mail-menu').classList.toggle('hidden');
+  }
+
+  function copyEmail2() {
+    navigator.clipboard.writeText('stephane.winckel@luxmeca.lu').then(() => {
+      const label = document.getElementById('copy-label-2');
+      label.textContent = '✅ Copié !';
+      setTimeout(() => { label.textContent = "Copier l'adresse"; }, 2000);
+    });
+  }
+
+  // ── Fermer les menus au clic extérieur ──
   document.addEventListener('click', (e) => {
-    const wrapper = document.getElementById('mail-dropdown-wrapper');
-    if (wrapper && !wrapper.contains(e.target)) {
+    const headerWrapper = document.getElementById('mail-dropdown-wrapper');
+    if (headerWrapper && !headerWrapper.contains(e.target)) {
       document.getElementById('mail-menu').classList.add('hidden');
       document.getElementById('mail-arrow').textContent = '▾';
     }
+    const contactWrapper = document.getElementById('contact-mail-wrapper');
+    if (contactWrapper && !contactWrapper.contains(e.target)) {
+      document.getElementById('contact-mail-menu')?.classList.add('hidden');
+    }
   });
 
-  // Fade-in avec déclenchement immédiat pour les éléments déjà visibles
+  // ── Fade-in ──
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -439,32 +461,11 @@
   }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
   fadeEls.forEach(el => {
-    // Déclenche immédiatement si déjà dans le viewport
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight) {
       el.classList.add('visible');
     } else {
       observer.observe(el);
-    }
-  });
-
-  function toggleContactMail() {
-    const menu = document.getElementById('contact-mail-menu');
-    menu.classList.toggle('hidden');
-  }
-
-  function copyEmail2() {
-    navigator.clipboard.writeText('stephane.winckel@luxmeca.lu').then(() => {
-      const label = document.getElementById('copy-label-2');
-      label.textContent = '✅ Copié !';
-      setTimeout(() => { label.textContent = "Copier l'adresse"; }, 2000);
-    });
-  }
-
-  document.addEventListener('click', (e) => {
-    const w = document.getElementById('contact-mail-wrapper');
-    if (w && !w.contains(e.target)) {
-      document.getElementById('contact-mail-menu')?.classList.add('hidden');
     }
   });
 </script>
