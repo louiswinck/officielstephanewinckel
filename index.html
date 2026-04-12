@@ -195,9 +195,24 @@
         <p class="text-sm text-gray-500">Chargé d'affaires · DIRICKX — Luxembourg</p>
       </div>
     </div>
-    <a href="mailto:stephane.winckel@luxmeca.lu" class="btn btn-green px-4 py-2 rounded-md text-sm font-medium">
-      Envoyer un mail
-    </a>
+    <div class="relative" id="mail-dropdown-wrapper">
+      <button onclick="toggleMailMenu()" class="btn btn-green px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2">
+        Envoyer un mail <span id="mail-arrow">▾</span>
+      </button>
+      <div id="mail-menu" class="hidden absolute right-0 mt-2 w-52 rounded-lg shadow-lg overflow-hidden z-50" style="background:rgba(20,20,20,0.97); border:1px solid rgba(179,0,0,0.4);">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=stephane.winckel@luxmeca.lu&su=Demande%20d%27information%20DIRICKX&body=Bonjour%20Stéphane%2C%0A%0A" target="_blank"
+           class="flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-red-900 transition-colors">
+          <img src="https://www.google.com/favicon.ico" class="w-4 h-4"> Gmail
+        </a>
+        <a href="https://outlook.live.com/mail/0/deeplink/compose?to=stephane.winckel@luxmeca.lu&subject=Demande%20d%27information%20DIRICKX" target="_blank"
+           class="flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-red-900 transition-colors">
+          <img src="https://outlook.live.com/favicon.ico" class="w-4 h-4"> Outlook
+        </a>
+        <button onclick="copyEmail()" class="w-full flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-red-900 transition-colors">
+          <span>📋</span> <span id="copy-label">Copier l'adresse</span>
+        </button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -340,8 +355,30 @@
 </footer>
 
 <script>
-  // Footer year (sans document.write)
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Menu mail
+  function toggleMailMenu() {
+    const menu = document.getElementById('mail-menu');
+    const arrow = document.getElementById('mail-arrow');
+    menu.classList.toggle('hidden');
+    arrow.textContent = menu.classList.contains('hidden') ? '▾' : '▴';
+  }
+
+  function copyEmail() {
+    navigator.clipboard.writeText('stephane.winckel@luxmeca.lu').then(() => {
+      const label = document.getElementById('copy-label');
+      label.textContent = '✅ Copié !';
+      setTimeout(() => { label.textContent = "Copier l'adresse"; }, 2000);
+    });
+  }
+
+  // Fermer le menu si on clique ailleurs
+  document.addEventListener('click', (e) => {
+    const wrapper = document.getElementById('mail-dropdown-wrapper');
+    if (wrapper && !wrapper.contains(e.target)) {
+      document.getElementById('mail-menu').classList.add('hidden');
+      document.getElementById('mail-arrow').textContent = '▾';
+    }
+  });
 
   // Fade-in avec déclenchement immédiat pour les éléments déjà visibles
   const fadeEls = document.querySelectorAll('.fade-in');
