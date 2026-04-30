@@ -463,11 +463,38 @@
 
 </main>
 
+  <!-- SEO TEXT -->
+  <div style="padding: 0.25rem 2rem; background: transparent;">
+    <button onclick="toggleSEO()" class="w-full flex items-center justify-between text-left" style="background:none; border:none; cursor:pointer;">
+      <span style="color: rgba(255,255,255,0.15); font-size: 0.7rem;">Informations</span>
+      <span id="seo-arrow" style="color:rgba(255,255,255,0.15); font-size:0.7rem; transition: transform 0.3s;">▾</span>
+    </button>
+    <div id="seo-content" style="display:none; margin-top:0.5rem;">
+      <p style="color:rgba(255,255,255,0.15); font-size:0.7rem; line-height:1.5;">
+        Stéphane Winckel est votre interlocuteur DIRICKX pour tous vos projets de clôture au Luxembourg, de portail motorisé ou de sécurité périmétrique dans la grande région. Que vous soyez une entreprise, une collectivité ou un particulier, DIRICKX propose des solutions adaptées : clôtures rigides, grillages soudés, portails automatiques, barrières, tourniquets, barreaudages et garde-corps.
+      </p>
+      <p style="color:rgba(255,255,255,0.15); font-size:0.7rem; line-height:1.5; margin-top:0.4rem;">
+        Basé à Ehlerange (Luxembourg), Stéphane intervient sur toute la grande région : Luxembourg-Ville, Esch-sur-Alzette, Differdange, Dudelange, mais aussi côté français à Thionville, Longwy et en Moselle. Spécialiste de la pose de clôture industrielle, de l'installation de portail au Luxembourg et du contrôle d'accès, il assure un suivi complet de votre projet, du devis à la réception du chantier.
+      </p>
+      <p style="color:rgba(255,255,255,0.15); font-size:0.7rem; line-height:1.5; margin-top:0.4rem;">
+        DIRICKX, n°1 fabricant français de clôtures et portails métalliques, propose une garantie anti-corrosion 10 ans et une certification ISO 9001. Pour un devis clôture Luxembourg ou toute demande concernant un portail automatique, une clôture haute sécurité ou une motorisation de portail, contactez directement Stéphane Winckel chez Lux-Méca SA.
+      </p>
+    </div>
+  </div>
+
 <footer class="text-center text-sm fade-in pt-10 border-t border-gray-700 w-full">
   © <span id="year"></span> DIRICKX — Chargé d'affaires Luxembourg · Stéphane Winckel · Luxmeca SA
 </footer>
 
 <script>
+  function toggleSEO() {
+    const content = document.getElementById('seo-content');
+    const arrow = document.getElementById('seo-arrow');
+    const isHidden = content.style.display === 'none';
+    content.style.display = isHidden ? 'block' : 'none';
+    arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+
   // ── Footer année ──
   document.getElementById('year').textContent = new Date().getFullYear();
 
